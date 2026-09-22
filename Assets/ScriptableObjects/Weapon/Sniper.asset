@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def5c85219dacc94288042ca833a1f22, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  weaponPrefab: {fileID: 731244639926282000, guid: 31d4bf297e66b0f4ab2f4e71ccd16ca5, type: 3}
+  weaponName: Sniper
+  icon: {fileID: 21300000, guid: 8a6458290280cb3489d823b11b5d7c4c, type: 3}
+  projectilePrefab: {fileID: 8874919152301861095, guid: 681a4fec53699b64db6c6aeca484f9b3, type: 3}
+  fireRate: 1
+  searchRange: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128

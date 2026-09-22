@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def5c85219dacc94288042ca833a1f22, type: 3}
+  m_Name: LightningBolt
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponData
+  weaponPrefab: {fileID: 7095545119506958892, guid: 33141cee42aab3049a1ace630e84486c, type: 3}
+  weaponName: LightningBolt
+  icon: {fileID: 21300000, guid: ef8f29dd7ab8afa438c8c94a49f8359c, type: 3}
+  projectilePrefab: {fileID: 5313104750029286077, guid: ebba64b6f3aedf74abef31e977cc99dc, type: 3}
+  fireRate: 0.5
+  searchRange: 5
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6924a14817cf7b041af11a17661002dc, type: 3}
+  m_Name: SpawnerData
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnerData
+  enemyPrefab: {fileID: 7164716663831477485, guid: ed20da488a307994783e6fa5a0a01275, type: 3}
+  spawnInterval: 1
+  initialPoolSize: 100
+  baseSpawnCount: 1
+  timeToIncreaseDifficulty: 60
+  spawnCountIncrement: 2
+  maxSpawnCount: 20
+  maxEnemiesAlive: 500
+  despawnDistance: 40
