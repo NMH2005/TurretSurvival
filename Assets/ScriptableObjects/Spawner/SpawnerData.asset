@@ -18,6 +18,6 @@ MonoBehaviour:
   baseSpawnCount: 1
   timeToIncreaseDifficulty: 60
   spawnCountIncrement: 2
-  maxSpawnCount: 20
-  maxEnemiesAlive: 500
+  maxSpawnCount: 500
+  maxEnemiesAlive: 100
   despawnDistance: 40

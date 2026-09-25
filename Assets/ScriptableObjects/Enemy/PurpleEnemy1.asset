@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16362c5c71a6fd0409fb0f31d2cb1291, type: 3}
+  m_Name: PurpleEnemy1
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyData
+  movementSpeed: 10
+  maxHealth: 20
+  damage: 10
+  localScale: {x: 1.5, y: 1.5, z: 1.5}
+  separationRadius: 1
+  separationWeight: 10
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  attackCoolDown: 1

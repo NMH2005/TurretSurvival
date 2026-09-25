@@ -1,8 +1,7 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserWeapon : MonoBehaviour
-{
+public class LaserWeapon : MonoBehaviour {
     [SerializeField] private LaserData laserData;
     [SerializeField] private Transform firePoint;
     [SerializeField] private LineRenderer lineRenderer;
@@ -12,52 +11,53 @@ public class LaserWeapon : MonoBehaviour
     private bool isFiring;
     private float tickTimer;
 
-    private static RaycastHit2D[] hitBuffer = new RaycastHit2D[10];
     private readonly List<ParticleSystem> startParticles = new List<ParticleSystem>();
     private readonly List<ParticleSystem> endParticles = new List<ParticleSystem>();
+
+    private static RaycastHit2D[] hitBuffer = new RaycastHit2D[10];
 
     private void Awake()
     {
         FillList(startVFX, startParticles);
         FillList(endVFX, endParticles);
-
-        Debug.Log($"startVFX null: {startVFX == null}, startParticles count: {startParticles.Count}");
-        Debug.Log($"endVFX null: {endVFX == null}, endParticles count: {endParticles.Count}");
     }
 
     private void FillList(GameObject vfxRoot, List<ParticleSystem> list)
     {
         if (vfxRoot == null) return;
-
-        for (int i = 0; i < vfxRoot.transform.childCount; i++)
-        {
-            var ps = vfxRoot.transform.GetChild(i).GetComponent<ParticleSystem>();
-            if (ps != null) list.Add(ps);
-        }
+        vfxRoot.GetComponentsInChildren(true, list);
     }
 
     public void StartLaser()
     {
-        Debug.Log("START LASER");
-
+        if (isFiring)
+            return;
         isFiring = true;
         tickTimer = 0f;
         lineRenderer.enabled = true;
+
         PlayAll(startParticles);
         PlayAll(endParticles);
     }
 
     public void StopLaser()
     {
+        if (!isFiring)
+            return;
         isFiring = false;
         lineRenderer.enabled = false;
+
         StopAll(startParticles);
         StopAll(endParticles);
     }
 
     private void PlayAll(List<ParticleSystem> list)
     {
-        for (int i = 0; i < list.Count; i++) list[i].Play();
+        for (int i = 0; i < list.Count; i++)
+        {
+            list[i].gameObject.SetActive(true);
+            list[i].Play();
+        }
     }
 
     private void StopAll(List<ParticleSystem> list)

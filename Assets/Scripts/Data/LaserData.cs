@@ -7,5 +7,5 @@ public class LaserData : ScriptableObject
     public int damagePerTick = 4;
     public float tickRate = 0.1f;
     public LayerMask enemyLayer;
-    public bool pierceThrough = true;
+    public bool pierceThrough = true;                                      
 }

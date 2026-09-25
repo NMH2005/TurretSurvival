@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: LaserData
   m_EditorClassIdentifier: Assembly-CSharp::LaserData
   range: 20
-  damagePerTick: 1
-  tickRate: 0.5
+  damagePerTick: 5
+  tickRate: 0.2
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
