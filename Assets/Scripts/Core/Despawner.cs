@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class Despawner : CoreComponent {
     private EnemyController enemyController;
     private float checkTimer;
