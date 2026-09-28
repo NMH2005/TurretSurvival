@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16362c5c71a6fd0409fb0f31d2cb1291, type: 3}
   m_Name: PurpleEnemy2
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  movementSpeed: 15
+  movementSpeed: 10
   maxHealth: 20
   damage: 10
   localScale: {x: 1.5, y: 1.5, z: 1.5}

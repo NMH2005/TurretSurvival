@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59f3579189f3a2b4d9f7c204623996f2, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  movementVelocity: 10
+  health: 100
+  heart: 1
+  movementVelocity: 15
   sidePushForce: 1.5
   pickupRange: 3

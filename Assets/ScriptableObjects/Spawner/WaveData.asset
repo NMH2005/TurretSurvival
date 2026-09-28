@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07a79c089fa87144b85d89e6d35d18db, type: 3}
+  m_Name: WaveData
+  m_EditorClassIdentifier: Assembly-CSharp::WaveData
+  waves:
+  - name: 
+    startTime: 0
+    endTime: 10
+    enemies:
+    - enemyPrefab: {fileID: 7164716663831477485, guid: ed20da488a307994783e6fa5a0a01275, type: 3}
+      countPerSpawn: 10
+      spawnInterval: 5
+      maxAlive: 20
+  - name: 
+    startTime: 11
+    endTime: 19.86
+    enemies:
+    - enemyPrefab: {fileID: 5618611581405078688, guid: c9babe8bef840ba43ad0f0da118157d9, type: 3}
+      countPerSpawn: 10
+      spawnInterval: 5
+      maxAlive: 20
+    - enemyPrefab: {fileID: 1637496825606159036, guid: 5e9e7650852568548a1ed5db83249196, type: 3}
+      countPerSpawn: 10
+      spawnInterval: 5
+      maxAlive: 20
+  - name: 
+    startTime: 20
+    endTime: 30
+    enemies:
+    - enemyPrefab: {fileID: 8083315219766040880, guid: ea076a85ffe07584fa92803ff745594b, type: 3}
+      countPerSpawn: 10
+      spawnInterval: 5
+      maxAlive: 20
+    - enemyPrefab: {fileID: 1748071843635869779, guid: f42462b530d79bf4585621905368e7fc, type: 3}
+      countPerSpawn: 10
+      spawnInterval: 5
+      maxAlive: 20
+    - enemyPrefab: {fileID: 4870767158522362463, guid: 4602cfcb06af1984cb487f522646f70e, type: 3}
+      countPerSpawn: 10
+      spawnInterval: 5
+      maxAlive: 20

@@ -3,20 +3,25 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
     public static Spawner Instance { get; private set; }
+
     [SerializeField] private Transform spawnPointHolder;
     [SerializeField] private Transform[] spawnPoints;
     [SerializeField] private SpawnerData spawnerData;
+    [SerializeField] private WaveData waveData;
+
+    [SerializeField] private float debugStartTime = 0f;
 
     public SpawnerData Data => spawnerData;
-
-    private Queue<EnemyController> enemyPool = new Queue<EnemyController>();
-    private float nextSpawnTime;
-    private int activeEnemyCount = 0;
-    private PlayerController player;
-    private Transform target;
-
     public float SurvivalTimer { get; private set; }
-    public int CurrentSpawnCount { get; private set; } = 1;
+    private readonly Dictionary<GameObject, Queue<EnemyController>> pools = new Dictionary<GameObject, Queue<EnemyController>>();
+    private readonly Dictionary<GameObject, int> activeByPrefab = new Dictionary<GameObject, int>();
+    private readonly Dictionary<EnemyController, GameObject> prefabOf = new Dictionary<EnemyController, GameObject>();
+
+    private float[][] nextSpawnTimes;
+    private bool[] waveStarted;
+
+    private int activeEnemyCount;
+    private PlayerController player;
 
     private void Awake()
     {
@@ -25,89 +30,162 @@ public class Spawner : MonoBehaviour {
 
     private void Start()
     {
-        InitializePool();
         player = FindAnyObjectByType<PlayerController>();
-        if (target != null)
-        {
-            target.position = player.gameObject.transform.position;
-        }
+        SurvivalTimer = debugStartTime;
+
+        BuildWaveRuntimeData();
+        InitializePools();
     }
 
     private void Update()
     {
         SurvivalTimer += Time.deltaTime;
 
-        UpdateDifficulty();
-
         if (spawnPointHolder != null && player != null)
         {
             spawnPointHolder.position = player.transform.position;
         }
 
-        if (activeEnemyCount >= spawnerData.maxEnemiesAlive) return;
+        UpdateWaves();
+    }
 
-
-        if (Time.time >= nextSpawnTime)
+    private void BuildWaveRuntimeData()
+    {
+        if (waveData == null)
         {
-            SpawnWave();
-            nextSpawnTime = Time.time + spawnerData.spawnInterval;
+            return;
+        }
+
+        int waveCount = waveData.waves.Count;
+        nextSpawnTimes = new float[waveCount][];
+        waveStarted = new bool[waveCount];
+
+        for (int w = 0; w < waveCount; w++)
+        {
+            WaveEntry wave = waveData.waves[w];
+            nextSpawnTimes[w] = new float[wave.enemies.Count];
+
+            for (int e = 0; e < wave.enemies.Count; e++)
+            {
+                nextSpawnTimes[w][e] = wave.startTime;
+            }
         }
     }
 
-    private void UpdateDifficulty()
+    private void UpdateWaves()
     {
-        if (spawnerData == null || spawnerData.timeToIncreaseDifficulty <= 0) return;
+        if (nextSpawnTimes == null) return;
 
-        int stagesPassed = Mathf.FloorToInt(SurvivalTimer / spawnerData.timeToIncreaseDifficulty);
+        List<WaveEntry> waves = waveData.waves;
 
-        int calculatedCount = spawnerData.baseSpawnCount + (stagesPassed * spawnerData.spawnCountIncrement);
-
-        CurrentSpawnCount = Mathf.Min(calculatedCount, spawnerData.maxSpawnCount);
-    }
-
-    private void SpawnWave()
-    {
-        for (int i = 0; i < CurrentSpawnCount; i++)
+        for (int w = 0; w < waves.Count && w < nextSpawnTimes.Length; w++)
         {
-            SpawnEnemyFromPool();
+            WaveEntry wave = waves[w];
+            if (!wave.IsActiveAt(SurvivalTimer)) continue;
+
+            if (!waveStarted[w])
+            {
+                waveStarted[w] = true;
+            }
+
+            for (int e = 0; e < wave.enemies.Count && e < nextSpawnTimes[w].Length; e++)
+            {
+                EnemySpawnInfo info = wave.enemies[e];
+                if (info.enemyPrefab == null) continue;
+                if (SurvivalTimer < nextSpawnTimes[w][e]) continue;
+
+                SpawnBatch(info);
+                nextSpawnTimes[w][e] = SurvivalTimer + Mathf.Max(0.05f, info.spawnInterval);
+            }
         }
     }
 
-    private void InitializePool()
+    private void SpawnBatch(EnemySpawnInfo info)
     {
-        if (spawnerData == null || spawnerData.enemyPrefab == null) return;
-        for (int i = 0; i < spawnerData.initialPoolSize; i++)
+        for (int i = 0; i < info.countPerSpawn; i++)
         {
-            CreateNewEnemyForPool();
+            if (activeEnemyCount >= spawnerData.maxEnemiesAlive) return;
+            if (info.maxAlive > 0 && GetActiveCount(info.enemyPrefab) >= info.maxAlive) return;
+
+            SpawnEnemyFromPool(info.enemyPrefab);
         }
     }
 
-    private EnemyController CreateNewEnemyForPool()
+
+    private Queue<EnemyController> GetPool(GameObject prefab)
     {
-        GameObject go = Instantiate(spawnerData.enemyPrefab, transform);
+        if (!pools.TryGetValue(prefab, out Queue<EnemyController> pool))
+        {
+            pool = new Queue<EnemyController>();
+            pools[prefab] = pool;
+            activeByPrefab[prefab] = 0;
+        }
+        return pool;
+    }
+
+    private int GetActiveCount(GameObject prefab)
+    {
+        return activeByPrefab.TryGetValue(prefab, out int count) ? count : 0;
+    }
+
+    private void InitializePools()
+    {
+        if (waveData == null || spawnerData == null) return;
+
+        var seen = new HashSet<GameObject>();
+        foreach (WaveEntry wave in waveData.waves)
+        {
+            foreach (EnemySpawnInfo info in wave.enemies)
+            {
+                if (info.enemyPrefab == null || !seen.Add(info.enemyPrefab)) continue;
+
+                for (int i = 0; i < spawnerData.initialPoolSize; i++)
+                {
+                    CreateNewEnemyForPool(info.enemyPrefab);
+                }
+            }
+        }
+    }
+
+    private EnemyController CreateNewEnemyForPool(GameObject prefab)
+    {
+        GameObject go = Instantiate(prefab, transform);
         EnemyController enemy = go.GetComponent<EnemyController>();
+
+        if (enemy == null)
+        {
+            Destroy(go);
+            return null;
+        }
+
         go.SetActive(false);
-        enemyPool.Enqueue(enemy);
+        prefabOf[enemy] = prefab;
+        GetPool(prefab).Enqueue(enemy);
         return enemy;
     }
 
-    public void SpawnEnemyFromPool()
+    private void SpawnEnemyFromPool(GameObject prefab)
     {
         if (spawnPoints == null || spawnPoints.Length == 0) return;
 
-        if (enemyPool.Count == 0)
+        Queue<EnemyController> pool = GetPool(prefab);
+        if (pool.Count == 0)
         {
-            CreateNewEnemyForPool();
+            CreateNewEnemyForPool(prefab);
+            if (pool.Count == 0) return;
         }
 
-        EnemyController enemy = enemyPool.Dequeue();
+        EnemyController enemy = pool.Dequeue();
 
         Transform chosenPoint = GetSmartSpawnPoint();
         Vector2 spawnOffset = Random.insideUnitCircle * 0.4f;
         Vector2 finalPos = (Vector2)chosenPoint.position + spawnOffset;
+
         enemy.gameObject.SetActive(true);
         enemy.ResetEnemy(finalPos);
+
         activeEnemyCount++;
+        activeByPrefab[prefab]++;
     }
 
     private Transform GetSmartSpawnPoint()
@@ -137,9 +215,17 @@ public class Spawner : MonoBehaviour {
 
     public void ReturnEnemyToPool(EnemyController enemy)
     {
-        enemy.Core.Movement. SetVelocityZero();
+
+        if (!enemy.gameObject.activeSelf) return;
+
+        enemy.Core.Movement.SetVelocityZero();
         enemy.gameObject.SetActive(false);
-        enemyPool.Enqueue(enemy);
+
+        if (prefabOf.TryGetValue(enemy, out GameObject prefab))
+        {
+            GetPool(prefab).Enqueue(enemy);  
+            activeByPrefab[prefab]--;
+        }
         activeEnemyCount--;
     }
 }

@@ -12,12 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6924a14817cf7b041af11a17661002dc, type: 3}
   m_Name: SpawnerData
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerData
-  enemyPrefab: {fileID: 7164716663831477485, guid: ed20da488a307994783e6fa5a0a01275, type: 3}
-  spawnInterval: 1
-  initialPoolSize: 100
-  baseSpawnCount: 1
-  timeToIncreaseDifficulty: 60
-  spawnCountIncrement: 2
-  maxSpawnCount: 500
+  initialPoolSize: 200
   maxEnemiesAlive: 100
   despawnDistance: 40
