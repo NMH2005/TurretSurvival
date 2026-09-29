@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: -8925561834220928024}
   - component: {fileID: -8242808860289027966}
   - component: {fileID: 5747858052995953862}
-  - component: {fileID: 7277732914612582003}
   m_Layer: 7
   m_Name: GreenMiniBoss
   m_TagString: Untagged
@@ -272,28 +271,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: 4a0bf28fe3133fe47968f8c251a03375, type: 2}
---- !u!95 &7277732914612582003
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1637496825606159036}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 40572ad09bdcfea4697d750c88678ffd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2548749442993167165
 GameObject:
   m_ObjectHideFlags: 0

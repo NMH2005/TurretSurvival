@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemyChaseState : EnemyState {
 
     private static Collider2D[] neighborColliders = new Collider2D[10];
-    public EnemyChaseState(EnemyController enemyController, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemyController, stateMachine, enemyData, animBoolName)
+    public EnemyChaseState(EnemyController enemyController, EnemyStateMachine stateMachine, EnemyData enemyData, Sprite[] animFrames, float animFps) : base(enemyController, stateMachine, enemyData, animFrames, animFps, loopAnim: true)
     {
     }
 

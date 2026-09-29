@@ -11,5 +11,5 @@ public class EnemyData : ScriptableObject
     public float separationWeight = 1.5f;
     public LayerMask enemyLayer;
     public float attackCoolDown = 1f;
-    
+    public EnemyAnimData animData;
 }

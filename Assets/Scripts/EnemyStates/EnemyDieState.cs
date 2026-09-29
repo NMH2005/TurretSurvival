@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public class EnemyDieState : EnemyState {
-    public EnemyDieState(EnemyController enemyController, EnemyStateMachine stateMachine, EnemyData enemyData, string animBoolName) : base(enemyController, stateMachine, enemyData, animBoolName)
+    public EnemyDieState(EnemyController enemyController, EnemyStateMachine stateMachine, EnemyData enemyData, Sprite[] animFrames, float animFps)
+        : base(enemyController, stateMachine, enemyData, animFrames, animFps, loopAnim: false)
     {
     }
 
@@ -23,15 +24,8 @@ public class EnemyDieState : EnemyState {
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        AnimatorStateInfo stateInfo =
-        enemyController.Anim.GetCurrentAnimatorStateInfo(0);
-        if (stateInfo.IsName(animBoolName) &&
-        stateInfo.normalizedTime >= 1f)
-        {
-            animDone = true;
-        }
 
-        if (animDone)
+        if (core.SpriteAnimator.IsFinished)
         {
             core.Combat.DropExp();
             Spawner.Instance.ReturnEnemyToPool(enemyController);

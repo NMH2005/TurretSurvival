@@ -151,7 +151,6 @@ GameObject:
   - component: {fileID: -873941086773736895}
   - component: {fileID: 8052965222592693268}
   - component: {fileID: 1022151879839120399}
-  - component: {fileID: -3460609491587240765}
   m_Layer: 7
   m_Name: PurpleEnemy
   m_TagString: Untagged
@@ -320,28 +319,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: 5ccb03493d6bc1a42ab7dc7daf82fbca, type: 2}
---- !u!95 &-3460609491587240765
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8083315219766040880}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5aed1f2cad8efc542accb86c42bf5206, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8489733350402394321
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,12 +3,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ExpBarUI : MonoBehaviour
-{
+public class ExpBarUI : MonoBehaviour {
     [SerializeField] private Image expFill;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private float fillSpeed = 1.5f;
 
     private LevelSystem levelSystem;
+    private float targetFillAmount;
+    private bool isAnimating;
+    private int lastLevel = -1;
 
     private void Start()
     {
@@ -28,9 +31,42 @@ public class ExpBarUI : MonoBehaviour
         EventsManager.OnExpChanged -= HandleExpChanged;
     }
 
+    private void Update()
+    {
+        if (!isAnimating) return;
+
+        expFill.fillAmount = Mathf.MoveTowards(
+            expFill.fillAmount,
+            targetFillAmount,
+            fillSpeed * Time.deltaTime
+        );
+
+        if (Mathf.Approximately(expFill.fillAmount, targetFillAmount))
+        {
+            expFill.fillAmount = targetFillAmount;
+            isAnimating = false;
+        }
+    }
+
     private void HandleExpChanged(int currentExp, int expToNext, int currentLevel)
     {
-        expFill.fillAmount =(float) currentExp/expToNext;
+        float newFillAmount = (float)currentExp / expToNext;
         levelText.text = currentLevel.ToString();
+
+        if (currentLevel != lastLevel)
+        {
+            expFill.fillAmount = newFillAmount;
+            targetFillAmount = newFillAmount;
+
+            isAnimating = false;
+            lastLevel = currentLevel;
+
+            return;
+        }
+
+        targetFillAmount = newFillAmount;
+        isAnimating = true;
+
+        lastLevel = currentLevel;
     }
 }

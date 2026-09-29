@@ -6,22 +6,23 @@ public class EnemyState
     protected EnemyController enemyController;
     protected EnemyStateMachine stateMachine;
     protected EnemyData enemyData;
-    protected string animBoolName;
-    protected bool animDone;
-    public EnemyState(EnemyController enemyController, EnemyStateMachine stateMachine, EnemyData enemyData,string animBoolName )
+    protected Sprite[] animFrames;
+    protected float animFps;
+    protected bool loopAnim;
+    public EnemyState(EnemyController enemyController, EnemyStateMachine stateMachine, EnemyData enemyData, Sprite[] animFrames, float animFps, bool loopAnim = true)
     {
         this.enemyController = enemyController;
         this.stateMachine = stateMachine;
         this.enemyData = enemyData;
-        this.animBoolName = animBoolName;
+        this.animFrames = animFrames;
+        this.animFps = animFps;
+        this.loopAnim = loopAnim;
         core = enemyController.Core;
     }
-
     public virtual void Enter()
     {
         DoChecks();
-        animDone = false;
-        enemyController.Anim.CrossFade(animBoolName, 0.1f);
+        core.SpriteAnimator.Play(animFrames, animFps, loopAnim);
     }
 
     public virtual void Exit()

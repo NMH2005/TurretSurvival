@@ -126,6 +126,7 @@ Transform:
   - {fileID: 9144569010825399727}
   - {fileID: 7368387195000571954}
   - {fileID: 3827050722308520143}
+  - {fileID: 3181458562078761331}
   m_Father: {fileID: 7982441882603039692}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7846955696092675367
@@ -140,6 +141,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd26fba03e03447448669f4c7794c8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core
+--- !u!1 &1596853173647351707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3181458562078761331}
+  - component: {fileID: 8852300356741653193}
+  m_Layer: 7
+  m_Name: Animation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3181458562078761331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596853173647351707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1843933304002938544}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8852300356741653193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596853173647351707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e0ab42f91420584a9a7111c63b2eaba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteAnimator
 --- !u!1 &3764235007922570133
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,7 +285,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7982441882603039692}
   - component: {fileID: 7405002335095462402}
-  - component: {fileID: 2628548636234529542}
   - component: {fileID: 2445580578682138914}
   - component: {fileID: 5342640907641953616}
   - component: {fileID: 8376310313606231581}
@@ -326,28 +370,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &2628548636234529542
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7164716663831477485}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8f79a3944bcc1cc4498715b8abd210a5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &2445580578682138914
 BoxCollider2D:
   m_ObjectHideFlags: 0

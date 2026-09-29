@@ -8,6 +8,16 @@ public class Core : MonoBehaviour {
     private Health health;
     private Attack attack;
     private WeaponSystem weaponSystem;
+    private SpriteAnimator spriteAnimator;
+
+    public SpriteAnimator SpriteAnimator
+    {
+        get
+        {
+            if(spriteAnimator == null) spriteAnimator = GetComponentInChildren<SpriteAnimator>();
+            return spriteAnimator;
+        }
+    }
     public WeaponSystem WeaponSystem
     {
         get

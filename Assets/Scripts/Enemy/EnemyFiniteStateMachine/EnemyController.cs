@@ -3,16 +3,11 @@ using UnityEngine.Pool;
 
 public class EnemyController : MonoBehaviour {
     [SerializeField] private EnemyData enemyData;
-    #region components
-    public Core Core { get; private set; }
-    public Animator Anim { get; private set; }
-    #endregion
 
-    #region state variables
+    public Core Core { get; private set; }
     public EnemyStateMachine StateMachine { get; private set; }
     public EnemyChaseState ChaseState { get; private set; }
     public EnemyDieState DieState { get; private set; }
-    #endregion
     public Transform Target { get; private set; }
 
     private IObjectPool<EnemyController> enemyPool;
@@ -20,10 +15,9 @@ public class EnemyController : MonoBehaviour {
     private void Awake()
     {
         Core = GetComponentInChildren<Core>();
-        Anim = GetComponent<Animator>();
         StateMachine = new EnemyStateMachine();
-        ChaseState = new EnemyChaseState(this, StateMachine, enemyData, "EnemyRun");
-        DieState = new EnemyDieState(this, StateMachine, enemyData, "EnemyDie");
+        ChaseState = new EnemyChaseState(this, StateMachine, enemyData, enemyData.animData.runFrames, enemyData.animData.runFps);
+        DieState = new EnemyDieState(this, StateMachine, enemyData, enemyData.animData.dieFrames, enemyData.animData.dieFps);
 
         Core.Combat.OnDeath += HandleDeath;
     }
