@@ -16,6 +16,8 @@ public class WeaponBase : MonoBehaviour {
     public WeaponData TemplateData => weaponData;
     public WeaponData Data => RuntimeData != null ? RuntimeData.Weapon : weaponData;
     public WeaponRuntimeData RuntimeData { get; private set; }
+    public WeaponAmmo Ammo { get; private set; }
+    protected virtual bool UsesMagazine => true;
 
     public Transform Target { get; set; }
 
@@ -30,6 +32,8 @@ public class WeaponBase : MonoBehaviour {
         if (RuntimeData != null) throw new System.InvalidOperationException("Weapon is already initialized.");
         RuntimeData = data;
         SetControlMode(isManual);
+        if (isManual && UsesMagazine)
+            Ammo = new WeaponAmmo(Data.magazineCapacity, Data.reloadDuration);
     }
 
     protected void EnsureRuntimeData()
@@ -53,11 +57,14 @@ public class WeaponBase : MonoBehaviour {
     }
     protected virtual void Update()
     {
+        if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
+        if (IsManual) Ammo?.Tick(Time.deltaTime);
         StateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
+        if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
@@ -66,6 +73,7 @@ public class WeaponBase : MonoBehaviour {
     {
         EnsureRuntimeData();
         if (firePoint == null || Data.projectilePrefab == null) return;
+        if (!TryConsumeManualShot()) return;
         SpawnProjectile(Data.projectilePrefab, firePoint.position, firePoint.rotation);
         LastFireTime = Time.time;
     }
@@ -81,6 +89,7 @@ public class WeaponBase : MonoBehaviour {
 
     public virtual void StartFire()
     {
+        if (Time.timeScale <= 0f) return;
         EnsureRuntimeData();
         if (Time.time >= LastFireTime + Data.fireRate)
         {
@@ -90,6 +99,33 @@ public class WeaponBase : MonoBehaviour {
 
     public virtual void StopFire()
     {
+    }
+
+    protected bool TryConsumeManualShot()
+    {
+        if (Time.timeScale <= 0f) return false;
+        if (!IsManual || Ammo == null) return true;
+        Ammo.ReloadDuration = Data.reloadDuration;
+        if (!Ammo.TryConsumeShot())
+        {
+            if (Ammo.CurrentAmmo == 0) Ammo.TryReload();
+            return false;
+        }
+        if (Ammo.CurrentAmmo == 0) Ammo.TryReload();
+        return true;
+    }
+
+    public virtual bool TryReload()
+    {
+        if (!IsManual || !UsesMagazine || Time.timeScale <= 0f) return false;
+        EnsureRuntimeData();
+        Ammo.ReloadDuration = Data.reloadDuration;
+        return Ammo.TryReload();
+    }
+
+    protected virtual void OnDisable()
+    {
+        StopFire();
     }
 
     protected virtual void OnDestroy()

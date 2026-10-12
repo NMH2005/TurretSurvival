@@ -17,6 +17,9 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 6d9b5ba98ed24cf4383c26f88427621f, type: 3}
   projectilePrefab: {fileID: 8725019036861589448, guid: fb55638db5b545e448adc6da6b8b5b63, type: 3}
   fireRate: 1
+  magazineCapacity: 2
+  reloadDuration: 1.2
+  batteryDuration: 3
   searchRange: 5
   enemyLayer:
     serializedVersion: 2

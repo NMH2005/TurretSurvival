@@ -18,6 +18,7 @@ public class LaserWeapon : MonoBehaviour {
     [SerializeField] private GameObject endVFX;
 
     private bool isFiring;
+    public bool IsFiring => isFiring;
     private float tickTimer;
 
     private readonly List<ParticleSystem> startParticles = new List<ParticleSystem>();
@@ -76,7 +77,7 @@ public class LaserWeapon : MonoBehaviour {
 
     private void Update()
     {
-        if (!isFiring) return;
+        if (!isFiring || Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
 
         Vector2 origin = firePoint.position;
         Vector2 direction = firePoint.up;

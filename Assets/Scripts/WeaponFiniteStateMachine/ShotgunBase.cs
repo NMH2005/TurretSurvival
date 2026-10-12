@@ -9,7 +9,8 @@ public class ShotgunBase : WeaponBase
     {
         EnsureRuntimeData();
         var data = RuntimeData.Shotgun;
-        if (FirePoint == null || data == null || data.projectilePrefab == null) return;
+        if (FirePoint == null || data == null || data.projectilePrefab == null || data.pelletCount <= 0) return;
+        if (!TryConsumeManualShot()) return;
 
         float startAngle = -data.spreadAngle / 2f;
         float step = data.pelletCount > 1 ? data.spreadAngle / (data.pelletCount - 1) : 0f;

@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour {
     public int NormInputY { get; private set; }
     public Vector2 MouseWorldPosition { get; private set; }
     private Camera mainCamera;
+    private WeaponSystem weaponSystem;
 
     private void Awake()
     {
@@ -30,5 +31,12 @@ public class PlayerInputHandler : MonoBehaviour {
     {
         if (context.started || context.performed) fireInput = true;
         else if (context.canceled) fireInput = false;
+    }
+
+    public void OnReloadInput(InputAction.CallbackContext context)
+    {
+        if (!context.performed || Time.timeScale <= 0f) return;
+        if (weaponSystem == null) weaponSystem = GetComponentInChildren<WeaponSystem>();
+        if (weaponSystem != null) weaponSystem.ManualWeapon?.TryReload();
     }
 }

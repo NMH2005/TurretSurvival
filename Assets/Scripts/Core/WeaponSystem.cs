@@ -8,6 +8,7 @@ public class WeaponSystem : CoreComponent
     private readonly List<WeaponBase> equippedWeapons = new List<WeaponBase>();
   
     public IReadOnlyList<WeaponBase> EquippedWeapon => equippedWeapons;
+    public WeaponBase ManualWeapon => equippedWeapons.Find(weapon => weapon != null && weapon.IsManual);
     public bool HasFreeSlot => equippedWeapons.Count < maxFreeSlot;
     public WeaponBase EquipWeapon(WeaponData weaponData)
     {

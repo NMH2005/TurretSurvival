@@ -27,11 +27,25 @@ public class FlamethrowerWeapon : MonoBehaviour {
     private float currentHeat = 0f;
     private bool isOverheated = false;
     private float jamTimer = 0f;
+    private bool heatEnabled = true;
 
     private List<Idamageable> enemiesInRange = new List<Idamageable>();
     private Dictionary<Idamageable, GameObject> enemyGameObjects = new Dictionary<Idamageable, GameObject>();
 
-    public bool CanFire => !isOverheated;
+    public bool CanFire => !heatEnabled || !isOverheated;
+    public float HeatNormalized => currentHeat;
+    public bool IsOverheated => isOverheated;
+
+    public void SetHeatEnabled(bool enabled)
+    {
+        heatEnabled = enabled;
+        if (!enabled)
+        {
+            currentHeat = 0f;
+            isOverheated = false;
+            jamTimer = 0f;
+        }
+    }
     private void Awake()
     {
         flameCollider = GetComponent<Collider2D>();
@@ -59,7 +73,7 @@ public class FlamethrowerWeapon : MonoBehaviour {
 
     public void StartFlame()
     {
-        if (isOverheated) return;
+        if (!CanFire || isFiring || Time.timeScale <= 0f) return;
 
         isFiring = true;
         tickTimer = 0f;
@@ -75,6 +89,7 @@ public class FlamethrowerWeapon : MonoBehaviour {
 
     public void StopFlame()
     {
+        if (!isFiring) return;
         isFiring = false;
 
         if (flameCollider != null)
@@ -97,6 +112,7 @@ public class FlamethrowerWeapon : MonoBehaviour {
 
     private void Update()
     {
+        if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
         HandleHeatLogic();
         if (!isFiring) return;
 
@@ -110,9 +126,10 @@ public class FlamethrowerWeapon : MonoBehaviour {
 
     private void HandleHeatLogic()
     {
+        if (!heatEnabled) return;
         if (isFiring)
         {
-            currentHeat += (Time.deltaTime / flameData.timeToOverheat);
+            currentHeat += Time.deltaTime / Mathf.Max(0.05f, flameData.timeToOverheat);
             if (currentHeat >= 1f)
             {
                 currentHeat = 1f;
@@ -120,35 +137,18 @@ public class FlamethrowerWeapon : MonoBehaviour {
                 jamTimer = flameData.overheatJamDuration;
                 StopFlame();
             }
+            return;
         }
-        else
+
+        float coolingTime = Time.deltaTime;
+        if (isOverheated && jamTimer > 0f)
         {
-            if (isOverheated)
-            {
-                if (jamTimer > 0f)
-                {
-                    jamTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    currentHeat -= (Time.deltaTime / flameData.timeToOverheat);
-                    if (currentHeat <= 0f)
-                    {
-                        currentHeat = 0f;
-                        isOverheated = false;
-                    }
-                }
-            } else
-            {
-                if(currentHeat > 0f)
-                {
-                    currentHeat -= (Time.deltaTime / flameData.timeToOverheat);
-                    if (currentHeat < 0f) currentHeat = 0f;
-                }
-
-            }
-
+            float jamTime = Mathf.Min(jamTimer, coolingTime);
+            jamTimer -= jamTime;
+            coolingTime -= jamTime;
         }
+        currentHeat = Mathf.Max(0f, currentHeat - coolingTime / Mathf.Max(0.05f, flameData.cooldownTime));
+        if (currentHeat <= 0f) isOverheated = false;
     }
 
     private void DealDamageToEnemiesInRange()
@@ -169,7 +169,7 @@ public class FlamethrowerWeapon : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if (!isFiring || Time.timeScale <= 0f) return;
         if (((1 << collision.gameObject.layer) & flameData.enemyLayer) == 0) return;
 
         var damageable = collision.GetComponentInChildren<Idamageable>();

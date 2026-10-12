@@ -57,16 +57,18 @@ For pure helper tests, use an Editor test assembly at `Assets/Tests/EditMode/Tur
 
 ### Task 2: Manual ammunition, battery, and heat recovery
 
+Implementation delivered for user testing. User explicitly waived further tests; no Task 2 tests or Unity build were run.
+
 **Files:** Create `Assets/Scripts/WeaponFiniteStateMachine/WeaponAmmo.cs` and `Assets/Scripts/UI/WeaponStatusUI.cs`. Modify `Assets/Scripts/Data/WeaponData.cs`, `Assets/Scripts/WeaponFiniteStateMachine/{WeaponBase,ShotgunBase,LaserBase,FlamethrowerBase}.cs`, `Assets/Scripts/Projectile/FlamethrowerWeapon.cs`, `Assets/Scripts/Player/Input/PlayerInputHandler.cs`, `Assets/InputSystem_Actions.inputactions`, and relevant weapon assets/prefabs. Tests: `Assets/Tests/EditMode/WeaponAmmoTests.cs`, PlayMode validation runner.
 
 **Interfaces:** Add serialized `magazineCapacity`, `reloadDuration`, and laser `batteryDuration` to WeaponData. `WeaponAmmo(int capacity, float reloadDuration)` exposes `CurrentAmmo`, `IsReloading`, `TryConsumeShot() : bool`, `TryReload() : bool`, `Tick(float deltaTime) : void`. Add `WeaponBase.TryReload() : bool` and `PlayerInputHandler.OnReloadInput(InputAction.CallbackContext context) : void`. HUD reads ammo/reload or normalized battery/heat from the equipped manual weapon.
 
-- [ ] Write `TwoShellShotgunConsumesPerShot`: two successful shots consume two shells despite five pellets each; third shot fails. `ReloadCompletesOnce`: repeated reload requests do not restart it; a 1-second reload stays incomplete after 0.9 seconds and fills at 1 second. Full-magazine reload is a no-op; zero capacity or nonpositive duration is rejected at configuration boundaries.
-- [ ] Run the fixture and verify failure.
-- [ ] Gate manual firing centrally before calling the existing firing method. Empty magazine starts reload immediately; R replaces a partial magazine, with unlimited reserve and no cancel in this version. Add a Reload action bound to R and wire the existing PlayerInput notification mode. Use scaled delta time for all timers. Prototype rifle: 12 shots/1.5-second reload; shotgun: 2 shells/1.2-second reload; sniper: 1 shot/1.5-second reload; lightning: 4 shots/1.5-second reload. Retain existing shot intervals initially.
-- [ ] Give laser 3 seconds of battery and 1.5-second reload; drain only while firing and stop the beam immediately on depletion. Retain flame heat buildup/jam settings; cool using `FlamethrowerData.cooldownTime`, clamp heat, require zero heat after overheating, and avoid repeatedly restarting its damage tick timer. Automatic mode bypasses these manual resource rules.
-- [ ] Verify held fire resumes after reload, no damage during reload/jam, releasing flame cools it, and paused reload/battery/heat timers remain unchanged. Verify visible HUD for each resource type.
-- [ ] Commit scoped files: `feat: add main weapon reload and recovery`.
+- [ ] Skipped at user request: write `TwoShellShotgunConsumesPerShot` and `ReloadCompletesOnce` tests.
+- [ ] Skipped at user request: run the failing test fixture.
+- [x] Gate manual firing centrally before calling the existing firing method. Empty magazine starts reload immediately; R replaces a partial magazine, with unlimited reserve and no cancel in this version. Add a Reload action bound to R and wire the existing PlayerInput notification mode. Use scaled delta time for all timers. Prototype rifle: 12 shots/1.5-second reload; shotgun: 2 shells/1.2-second reload; sniper: 1 shot/1.5-second reload; lightning: 4 shots/1.5-second reload. Retain existing shot intervals initially.
+- [x] Give laser 3 seconds of battery and 1.5-second reload; drain only while firing and stop the beam immediately on depletion. Retain flame heat buildup/jam settings; cool using `FlamethrowerData.cooldownTime`, clamp heat, require zero heat after overheating, and avoid repeatedly restarting its damage tick timer. Automatic mode bypasses these manual resource rules.
+- [ ] User testing: held fire resumes after reload, no damage during reload/jam, releasing flame cools it, and paused reload/battery/heat timers remain unchanged. Verify visible HUD for each resource type.
+- [x] Commit scoped files: `feat: add main weapon reload and recovery`.
 
 ### Task 3: Independent invisible automatic attacks
 
