@@ -3,6 +3,15 @@ using UnityEngine;
 
 public class LaserWeapon : MonoBehaviour {
     [SerializeField] private LaserData laserData;
+    private LaserData templateData;
+    public LaserData TemplateData => templateData != null ? templateData : laserData;
+
+    public void Initialize(LaserData data)
+    {
+        if (data == null) throw new System.ArgumentNullException(nameof(data));
+        if (templateData == null) templateData = laserData;
+        laserData = data;
+    }
     [SerializeField] private Transform firePoint;
     [SerializeField] private LineRenderer lineRenderer;
     [SerializeField] private GameObject startVFX;

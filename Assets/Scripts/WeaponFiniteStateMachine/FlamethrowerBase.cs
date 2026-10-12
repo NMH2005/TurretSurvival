@@ -2,6 +2,13 @@ using UnityEngine;
 
 public class FlamethrowerBase : WeaponBase {
     [SerializeField] private FlamethrowerWeapon flamethrowerWeapon;
+    public FlamethrowerData FlameTemplate => flamethrowerWeapon != null ? flamethrowerWeapon.TemplateData : null;
+
+    public override void Initialize(WeaponRuntimeData data, bool isManual)
+    {
+        base.Initialize(data, isManual);
+        flamethrowerWeapon.Initialize(data.Flame);
+    }
 
     private bool isFlaming;
 
@@ -11,6 +18,7 @@ public class FlamethrowerBase : WeaponBase {
 
     public override void StartFire()
     {
+        EnsureRuntimeData();
         if (!isFlaming && flamethrowerWeapon.CanFire)
         {
             isFlaming = true;

@@ -1,0 +1,5 @@
+{
+  "name": "TurretSurvival.EditModeTests",
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

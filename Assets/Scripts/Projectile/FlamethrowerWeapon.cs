@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class FlamethrowerWeapon : MonoBehaviour {
     [SerializeField] private FlamethrowerData flameData;
+    private FlamethrowerData templateData;
+    public FlamethrowerData TemplateData => templateData != null ? templateData : flameData;
+
+    public void Initialize(FlamethrowerData data)
+    {
+        if (data == null) throw new ArgumentNullException(nameof(data));
+        if (templateData == null) templateData = flameData;
+        flameData = data;
+    }
     [SerializeField] private ParticleSystem flameParticle;
 
     private Collider2D flameCollider;

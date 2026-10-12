@@ -15,7 +15,7 @@ public class WeaponSystem : CoreComponent
         GameObject instance = Instantiate(weaponData.weaponPrefab, weaponPivot.position, Quaternion.identity,weaponPivot);
         WeaponBase weapon = instance.GetComponent<WeaponBase>();
         bool isManual = equippedWeapons.Count == 0;
-        weapon.SetControlMode(isManual);
+        weapon.Initialize(WeaponRuntimeData.Create(weapon), isManual);
         equippedWeapons.Add(weapon);
         return weapon; 
     }

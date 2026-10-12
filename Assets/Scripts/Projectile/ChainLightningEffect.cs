@@ -3,6 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ChainLightningEffect : MonoBehaviour {
+    public readonly struct Snapshot
+    {
+        public readonly int chainCount;
+        public readonly float chainRange;
+        public readonly int damagePerJump;
+        public readonly float jumpDelay;
+        public readonly LayerMask enemyLayer;
+
+        public Snapshot(ChainLightningData data)
+        {
+            if (data == null) throw new System.ArgumentNullException(nameof(data));
+            chainCount = data.chainCount;
+            chainRange = data.chainRange;
+            damagePerJump = data.damagePerJump;
+            jumpDelay = data.jumpDelay;
+            enemyLayer = data.enemyLayer;
+        }
+    }
     public static ChainLightningEffect Instance { get; private set; }
 
     [SerializeField] private LightningBoltParticle lightning;
@@ -16,12 +34,17 @@ public class ChainLightningEffect : MonoBehaviour {
 
     public void StartChain(Transform target, ChainLightningData data)
     {
+        StartChain(target, new Snapshot(data));
+    }
+
+    public void StartChain(Transform target, Snapshot data)
+    {
         StartCoroutine(ChainRoutine(target, data));
     }
 
     private IEnumerator ChainRoutine(
         Transform current,
-        ChainLightningData data)
+        Snapshot data)
     {
         HashSet<Transform> hit = new()
         {
@@ -30,6 +53,7 @@ public class ChainLightningEffect : MonoBehaviour {
 
         for (int i = 0; i < data.chainCount; i++)
         {
+            if (current == null) yield break;
             Transform next = FindNearest(
                 current.position,
                 data,
@@ -59,7 +83,7 @@ public class ChainLightningEffect : MonoBehaviour {
 
     private Transform FindNearest(
         Vector2 position,
-        ChainLightningData data,
+        Snapshot data,
         HashSet<Transform> hit)
     {
         ContactFilter2D filter = new();

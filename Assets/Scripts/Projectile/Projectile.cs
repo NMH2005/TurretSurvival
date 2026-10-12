@@ -3,9 +3,28 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
     [SerializeField] private ProjectileData projectData;
+    public ProjectileData TemplateData => projectData;
+    private float speed;
+    private float lifeTime;
+    private float knockBack;
+    private int damage;
+    private int pierceCount;
+    private bool initialized;
     private Rigidbody2D rb;
     private int remainingPierce;
     private readonly HashSet<GameObject> alreadyHit = new HashSet<GameObject>();
+
+    public virtual void Initialize(ProjectileData data)
+    {
+        if (data == null) throw new System.ArgumentNullException(nameof(data));
+        if (initialized) throw new System.InvalidOperationException("Projectile is already initialized.");
+        speed = data.speed;
+        lifeTime = data.lifeTime;
+        knockBack = data.knockBack;
+        damage = data.damage;
+        pierceCount = data.pierceCount;
+        initialized = true;
+    }
 
     private void Awake()
     {
@@ -14,9 +33,10 @@ public class Projectile : MonoBehaviour {
 
     private void Start()
     {
-        rb.linearVelocity = transform.up * projectData.speed;
-        remainingPierce = projectData.pierceCount;
-        Destroy(gameObject, projectData.lifeTime);
+        if (!initialized) Initialize(projectData);
+        rb.linearVelocity = transform.up * speed;
+        remainingPierce = pierceCount;
+        Destroy(gameObject, lifeTime);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,14 +48,14 @@ public class Projectile : MonoBehaviour {
         var knockbackable = collision.gameObject.GetComponentInChildren<IKnockbackable>();
         if (knockbackable != null)
         {
-            knockbackable.ApplyKnockback(transform.up, projectData.knockBack);
+            knockbackable.ApplyKnockback(transform.up, knockBack);
             hitSomething = true;
         }
 
         var damageable = collision.gameObject.GetComponentInChildren<Idamageable>();
         if (damageable != null)
         {
-            damageable.TakeDamage(projectData.damage);
+            damageable.TakeDamage(damage);
             hitSomething = true;
         }
 

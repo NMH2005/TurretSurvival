@@ -13,7 +13,9 @@ public class WeaponBase : MonoBehaviour {
     public WeaponAttackState AttackState { get; private set; }
     public float LastFireTime { get; set; }
     public Transform FirePoint => firePoint;
-    public WeaponData Data => weaponData;
+    public WeaponData TemplateData => weaponData;
+    public WeaponData Data => RuntimeData != null ? RuntimeData.Weapon : weaponData;
+    public WeaponRuntimeData RuntimeData { get; private set; }
 
     public Transform Target { get; set; }
 
@@ -22,16 +24,30 @@ public class WeaponBase : MonoBehaviour {
     {
         IsManual = isManual;
     }
+    public virtual void Initialize(WeaponRuntimeData data, bool isManual)
+    {
+        if (data == null) throw new System.ArgumentNullException(nameof(data));
+        if (RuntimeData != null) throw new System.InvalidOperationException("Weapon is already initialized.");
+        RuntimeData = data;
+        SetControlMode(isManual);
+    }
+
+    protected void EnsureRuntimeData()
+    {
+        if (RuntimeData == null) Initialize(WeaponRuntimeData.Create(this), IsManual);
+    }
+
     private void Start()
     {
+        EnsureRuntimeData();
         pivotHandle = GetComponentInParent<PlayerPivotHandle>();
         InputHandler = GetComponentInParent<PlayerInputHandler>();
 
         StateMachine = new WeaponStateMachine();
-        AimState = new WeaponAimState(this, StateMachine, weaponData);
-        FireState = new WeaponFireState(this, StateMachine, weaponData);
-        SearchState = new WeaponSearchState(this, StateMachine, weaponData);
-        AttackState = new WeaponAttackState(this, StateMachine, weaponData);
+        AimState = new WeaponAimState(this, StateMachine, Data);
+        FireState = new WeaponFireState(this, StateMachine, Data);
+        SearchState = new WeaponSearchState(this, StateMachine, Data);
+        AttackState = new WeaponAttackState(this, StateMachine, Data);
 
         StateMachine.Initialize(IsManual ? (WeaponState)AimState : SearchState);
     }
@@ -48,14 +64,25 @@ public class WeaponBase : MonoBehaviour {
 
     public virtual void Fire()
     {
-        if (firePoint == null || weaponData.projectilePrefab == null) return;
-        Instantiate(weaponData.projectilePrefab, firePoint.position, firePoint.rotation);
+        EnsureRuntimeData();
+        if (firePoint == null || Data.projectilePrefab == null) return;
+        SpawnProjectile(Data.projectilePrefab, firePoint.position, firePoint.rotation);
         LastFireTime = Time.time;
+    }
+
+    protected void SpawnProjectile(Projectile prefab, Vector3 position, Quaternion rotation)
+    {
+        var projectile = Instantiate(prefab, position, rotation);
+        if (projectile is ChainLightningProjectile chain)
+            chain.Initialize(RuntimeData.Projectile, RuntimeData.Chain);
+        else
+            projectile.Initialize(RuntimeData.Projectile);
     }
 
     public virtual void StartFire()
     {
-        if (Time.time >= LastFireTime + weaponData.fireRate)
+        EnsureRuntimeData();
+        if (Time.time >= LastFireTime + Data.fireRate)
         {
             Fire();
         }
@@ -63,5 +90,10 @@ public class WeaponBase : MonoBehaviour {
 
     public virtual void StopFire()
     {
+    }
+
+    protected virtual void OnDestroy()
+    {
+        RuntimeData?.Dispose();
     }
 }
