@@ -12,7 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3cbc47d611da44bf9f4a31494d792, type: 3}
   m_Name: GreenMiniBoss 1
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimData
-  runFrames: []
+  runFrames:
+  - {fileID: 596194537335217721, guid: d6066d3bb98f8844b9744abfdd6f4dad, type: 3}
+  - {fileID: -801508960104938364, guid: d6066d3bb98f8844b9744abfdd6f4dad, type: 3}
+  - {fileID: 8885057846572699376, guid: d6066d3bb98f8844b9744abfdd6f4dad, type: 3}
+  - {fileID: -6946079661051162266, guid: d6066d3bb98f8844b9744abfdd6f4dad, type: 3}
+  - {fileID: 8232105068276514982, guid: d6066d3bb98f8844b9744abfdd6f4dad, type: 3}
+  - {fileID: -2648262843594524080, guid: d6066d3bb98f8844b9744abfdd6f4dad, type: 3}
   runFps: 10
-  dieFrames: []
+  dieFrames:
+  - {fileID: 718813677441335112, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: 1820761751675307067, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -9010335523631774442, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: 6905844863916541215, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -6167821883599291238, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -2879135080498335202, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -3035890103124533677, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -7721071835034582351, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: 3597197828217217442, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -6832192968202579953, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: 4243838753044765634, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
+  - {fileID: -65802124866128275, guid: 9d90334430e655544a33c2a18acf91ae, type: 3}
   dieFps: 10

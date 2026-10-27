@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6924a14817cf7b041af11a17661002dc, type: 3}
   m_Name: SpawnerData
   m_EditorClassIdentifier: Assembly-CSharp::SpawnerData
-  initialPoolSize: 200
-  maxEnemiesAlive: 100
+  initialPoolSize: 500
+  maxEnemiesAlive: 500
   despawnDistance: 40

@@ -24,4 +24,29 @@ public class ShotgunBase : WeaponBase
 
         LastFireTime = Time.time;
     }
+
+    public void FireRadial(int projectileCount)
+    {
+        if(IsManual || Time.timeScale <= 0f) return;
+
+        if(projectileCount <= 0) return;
+
+        EnsureRuntimeData();
+        
+        var shotgun = RuntimeData.Shotgun;
+        if(shotgun == null || shotgun.projectilePrefab == null) return;
+
+        float angleStep = 360f / projectileCount;
+
+        for (int i = 0; i < projectileCount; i++)
+        {
+            float angle = angleStep * i;
+
+            Quaternion rotation = Quaternion.Euler(0f,0f,angle);
+
+            SpawnProjectile(shotgun.projectilePrefab, transform.position, Quaternion.identity);
+        }
+
+        LastFireTime = Time.time;
+    }
 }

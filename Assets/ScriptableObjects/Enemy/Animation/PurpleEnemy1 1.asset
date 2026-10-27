@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e3cbc47d611da44bf9f4a31494d792, type: 3}
   m_Name: PurpleEnemy1 1
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimData
-  runFrames: []
+  runFrames:
+  - {fileID: 596194537335217721, guid: 3af3247fbbc869a4abdaf3b4ec5f1c4d, type: 3}
+  - {fileID: -801508960104938364, guid: 3af3247fbbc869a4abdaf3b4ec5f1c4d, type: 3}
+  - {fileID: 8885057846572699376, guid: 3af3247fbbc869a4abdaf3b4ec5f1c4d, type: 3}
+  - {fileID: -6946079661051162266, guid: 3af3247fbbc869a4abdaf3b4ec5f1c4d, type: 3}
+  - {fileID: 8232105068276514982, guid: 3af3247fbbc869a4abdaf3b4ec5f1c4d, type: 3}
+  - {fileID: -2648262843594524080, guid: 3af3247fbbc869a4abdaf3b4ec5f1c4d, type: 3}
   runFps: 10
-  dieFrames: []
+  dieFrames:
+  - {fileID: 718813677441335112, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: 1820761751675307067, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: -9010335523631774442, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: 6905844863916541215, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: -6167821883599291238, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: -2879135080498335202, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: -3035890103124533677, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
+  - {fileID: -7721071835034582351, guid: f3018efaed50b1842a98ddeb90977a53, type: 3}
   dieFps: 10

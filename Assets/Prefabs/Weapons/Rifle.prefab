@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6357891304028726393}
   - component: {fileID: 7951238145316882494}
   - component: {fileID: 4483460056708601400}
+  - component: {fileID: 6753540419244906920}
   m_Layer: 0
   m_Name: Rifle
   m_TagString: Untagged
@@ -107,6 +108,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
   weaponData: {fileID: 11400000, guid: f3378f8f1e504cf4db960fbf260b4e2f, type: 2}
   firePoint: {fileID: 1460727955127463411}
+  gunbodyRenderers:
+  - {fileID: 7951238145316882494}
+--- !u!114 &6753540419244906920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076146622918229447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39358a8b69872d043a7ac609fc22f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutomaticAttackController
 --- !u!1 &7022959651056063359
 GameObject:
   m_ObjectHideFlags: 0

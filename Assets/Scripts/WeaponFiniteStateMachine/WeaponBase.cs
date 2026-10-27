@@ -4,6 +4,7 @@ public class WeaponBase : MonoBehaviour {
 
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private SpriteRenderer[] gunbodyRenderers = System.Array.Empty<SpriteRenderer>();
     public PlayerPivotHandle pivotHandle { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
     public WeaponStateMachine StateMachine { get; private set; }
@@ -25,6 +26,14 @@ public class WeaponBase : MonoBehaviour {
     public void SetControlMode(bool isManual)
     {
         IsManual = isManual;
+
+        foreach(SpriteRenderer renderer in gunbodyRenderers)
+        {
+            if(renderer != null)
+            {
+                renderer.enabled = isManual;
+            }
+        }
     }
     public virtual void Initialize(WeaponRuntimeData data, bool isManual)
     {
@@ -44,27 +53,34 @@ public class WeaponBase : MonoBehaviour {
     private void Start()
     {
         EnsureRuntimeData();
+
+        if (!IsManual) return;
+
         pivotHandle = GetComponentInParent<PlayerPivotHandle>();
         InputHandler = GetComponentInParent<PlayerInputHandler>();
 
         StateMachine = new WeaponStateMachine();
         AimState = new WeaponAimState(this, StateMachine, Data);
         FireState = new WeaponFireState(this, StateMachine, Data);
-        SearchState = new WeaponSearchState(this, StateMachine, Data);
-        AttackState = new WeaponAttackState(this, StateMachine, Data);
 
-        StateMachine.Initialize(IsManual ? (WeaponState)AimState : SearchState);
+        StateMachine.Initialize(AimState);
     }
     protected virtual void Update()
     {
         if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
-        if (IsManual) Ammo?.Tick(Time.deltaTime);
+
+        if (!IsManual) return;
+
+        Ammo?.Tick(Time.deltaTime);
         StateMachine.CurrentState.LogicUpdate();
     }
 
     private void FixedUpdate()
     {
+        if(!IsManual) return;
+
         if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
+
         StateMachine.CurrentState.PhysicsUpdate();
     }
 

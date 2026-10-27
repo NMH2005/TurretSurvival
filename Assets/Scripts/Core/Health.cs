@@ -42,5 +42,12 @@ public class Health : CoreComponent, Idamageable
         }
     }
 
+    public void Heal(int amount)
+    {
+        if (IsDead || amount < 0) return;
+        CurrentHealth = Mathf.Min(MaxHealth, CurrentHealth + amount);
+
+        EventsManager.RaiseHealthChanged(CurrentHealth, CurrentHeart);
+    }
 
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4145864307257727292}
   - component: {fileID: 912163475357130555}
   - component: {fileID: 9108949445660299031}
+  - component: {fileID: 3397266294610085642}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -107,6 +108,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
   weaponData: {fileID: 11400000, guid: 1d2acf9281323b94c97a63185093d018, type: 2}
   firePoint: {fileID: 8645132919841281284}
+  gunbodyRenderers:
+  - {fileID: 912163475357130555}
+--- !u!114 &3397266294610085642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731244639926282000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39358a8b69872d043a7ac609fc22f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutomaticAttackController
 --- !u!1 &1675820820982310640
 GameObject:
   m_ObjectHideFlags: 0

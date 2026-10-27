@@ -14825,6 +14825,7 @@ GameObject:
   - component: {fileID: 2296878316664201230}
   - component: {fileID: 6315919846404825469}
   - component: {fileID: 1710436216621042854}
+  - component: {fileID: -5547779919707517837}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -14922,6 +14923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LaserBase
   weaponData: {fileID: 11400000, guid: ee34b59221ddb154a8eb9ee8a3104f8e, type: 2}
   firePoint: {fileID: 7734724233846999518}
+  gunbodyRenderers:
+  - {fileID: 2296878316664201230}
   laserWeapon: {fileID: 1710436216621042854}
 --- !u!114 &1710436216621042854
 MonoBehaviour:
@@ -14940,6 +14943,18 @@ MonoBehaviour:
   lineRenderer: {fileID: 5177950129651559867}
   startVFX: {fileID: 3812365949256805727}
   endVFX: {fileID: 2208851023975784629}
+--- !u!114 &-5547779919707517837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6937958678469301868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39358a8b69872d043a7ac609fc22f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutomaticAttackController
 --- !u!1 &8868911487296743669
 GameObject:
   m_ObjectHideFlags: 0

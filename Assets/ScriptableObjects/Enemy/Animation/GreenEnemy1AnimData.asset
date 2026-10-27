@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: -6946079661051162266, guid: b698e5fa2ecadbb44afc91b45ce14b3e, type: 3}
   - {fileID: 8232105068276514982, guid: b698e5fa2ecadbb44afc91b45ce14b3e, type: 3}
   - {fileID: -2648262843594524080, guid: b698e5fa2ecadbb44afc91b45ce14b3e, type: 3}
-  runFps: 60
+  runFps: 10
   dieFrames:
   - {fileID: 718813677441335112, guid: 13403078c186fe241a24174a23eb2596, type: 3}
   - {fileID: 1820761751675307067, guid: 13403078c186fe241a24174a23eb2596, type: 3}
@@ -28,4 +28,4 @@ MonoBehaviour:
   - {fileID: -6167821883599291238, guid: 13403078c186fe241a24174a23eb2596, type: 3}
   - {fileID: -2879135080498335202, guid: 13403078c186fe241a24174a23eb2596, type: 3}
   - {fileID: -3035890103124533677, guid: 13403078c186fe241a24174a23eb2596, type: 3}
-  dieFps: 60
+  dieFps: 10

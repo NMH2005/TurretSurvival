@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5004503458540827665}
   - component: {fileID: 5392563751511713333}
   - component: {fileID: -2582170398865521593}
+  - component: {fileID: -3675425313256646001}
   m_Layer: 0
   m_Name: LightningBolt
   m_TagString: Untagged
@@ -138,3 +139,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WeaponBase
   weaponData: {fileID: 11400000, guid: d88e880079fd67c4185fa311c901128c, type: 2}
   firePoint: {fileID: 193753019012159088}
+  gunbodyRenderers:
+  - {fileID: 5392563751511713333}
+--- !u!114 &-3675425313256646001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7095545119506958892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39358a8b69872d043a7ac609fc22f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutomaticAttackController

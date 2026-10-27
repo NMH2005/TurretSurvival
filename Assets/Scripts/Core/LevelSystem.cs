@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelSystem : CoreComponent {
     [SerializeField] private LevelData levelData;
 
-    public int CurrentLevel { get; private set; }
+    public int CurrentLevel { get; private set; } = 1;
     public int CurrentExp { get; private set; }
     public int ExpToNextLevel { get; private set; }
 

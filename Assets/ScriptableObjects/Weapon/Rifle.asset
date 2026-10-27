@@ -17,10 +17,15 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 9ebf478683fa130459f86a587c84d0b7, type: 3}
   projectilePrefab: {fileID: 520512881097747652, guid: 20980306b13967c4f8f53946d78fb12c, type: 3}
   fireRate: 0.5
-  magazineCapacity: 12
-  reloadDuration: 1.5
-  batteryDuration: 3
   searchRange: 5
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  automaticAttackPattern: 1
+  automaticCooldown: 3
+  burstCount: 3
+  burstInterval: 0.1
+  radialProjectileCount: 0
+  magazineCapacity: 12
+  reloadDuration: 1.5
+  batteryDuration: 3

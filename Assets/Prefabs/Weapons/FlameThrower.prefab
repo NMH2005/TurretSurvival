@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2640109134820933375}
   - component: {fileID: 7542454386493339218}
   - component: {fileID: 296967717998227488}
+  - component: {fileID: 8378317120830202137}
   m_Layer: 10
   m_Name: FlameThrower
   m_TagString: Untagged
@@ -140,7 +141,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FlamethrowerBase
   weaponData: {fileID: 11400000, guid: 0d9b2c5516901cd40b498652c4a45302, type: 2}
   firePoint: {fileID: 2720753055886613079}
+  gunbodyRenderers:
+  - {fileID: 7542454386493339218}
   flamethrowerWeapon: {fileID: 3237971572770844515}
+--- !u!114 &8378317120830202137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697431099045766487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39358a8b69872d043a7ac609fc22f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutomaticAttackController
 --- !u!1 &7048179977798088020
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,3 +22,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   attackCoolDown: 1
+  animData: {fileID: 11400000, guid: 8f919bf46877bcb4b8eee9e7e914182a, type: 2}

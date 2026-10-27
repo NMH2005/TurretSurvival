@@ -1,8 +1,16 @@
 using UnityEngine;
 
+public enum AutomaticAttackPattern {
+    None,
+    NearestBurst,
+    NearestChain,
+    RadialBurst
+}
+
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
 public class WeaponData : ScriptableObject
 {
+    [Header("Info")]
     public GameObject weaponPrefab;
     public string weaponName;
     public Sprite icon; 
@@ -11,8 +19,15 @@ public class WeaponData : ScriptableObject
     public float searchRange = 5f;
     public LayerMask enemyLayer;
 
+    [Header("Automatic attack")]
+    public AutomaticAttackPattern automaticAttackPattern;
+    public float automaticCooldown;
+    public int burstCount;
+    public float burstInterval;
+    public int radialProjectileCount;
+
     [Header("Manual weapon recovery")]
-    [Min(1)] public int magazineCapacity = 12;
-    [Min(0.05f)] public float reloadDuration = 1.5f;
-    [Min(0.05f)] public float batteryDuration = 3f;
+    public int magazineCapacity = 12;
+    public float reloadDuration = 1.5f;
+    public float batteryDuration = 3f;
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6423869148654434440}
   - component: {fileID: 1830970106608771961}
   - component: {fileID: 8791141653048280217}
+  - component: {fileID: -796009106667818299}
   m_Layer: 0
   m_Name: ShotGun
   m_TagString: Untagged
@@ -107,7 +108,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShotgunBase
   weaponData: {fileID: 11400000, guid: 6306d926f36de364782f28bc2916bdff, type: 2}
   firePoint: {fileID: 7884910648920509175}
+  gunbodyRenderers:
+  - {fileID: 1830970106608771961}
   shotgunData: {fileID: 11400000, guid: 47f393a2ddc54be48ba8a763bb9c8e2a, type: 2}
+--- !u!114 &-796009106667818299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657281641469808792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39358a8b69872d043a7ac609fc22f62d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AutomaticAttackController
 --- !u!1 &8809089874609896828
 GameObject:
   m_ObjectHideFlags: 0

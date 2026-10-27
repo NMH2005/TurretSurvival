@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Exp1
   m_EditorClassIdentifier: Assembly-CSharp::ExpData
   expPrefab: {fileID: 4175159496793271309, guid: 47fc4f80b05685244a1fbb12034e1dfc, type: 3}
-  expAmount: 10
+  expAmount: 100
   speed: 20

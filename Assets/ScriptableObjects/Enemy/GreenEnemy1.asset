@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   movementSpeed: 3
   maxHealth: 20
-  expPrefab: {fileID: 4175159496793271309, guid: 47fc4f80b05685244a1fbb12034e1dfc, type: 3}
-  expAmount: 10
+  damage: 10
   localScale: {x: 1.5, y: 1.5, z: 1.5}
   separationRadius: 1
   separationWeight: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  attackCoolDown: 1
+  animData: {fileID: 11400000, guid: 32e09d4c1c84c914fba1177e67f47c66, type: 2}
