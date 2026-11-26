@@ -1,0 +1,2041 @@
+{
+ "frames": [
+  {
+   "filename": "flamethrower 0",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 1",
+   "frame": {
+    "x": 184,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 2",
+   "frame": {
+    "x": 368,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 3",
+   "frame": {
+    "x": 552,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 4",
+   "frame": {
+    "x": 736,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 5",
+   "frame": {
+    "x": 920,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 6",
+   "frame": {
+    "x": 1104,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 7",
+   "frame": {
+    "x": 1288,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 8",
+   "frame": {
+    "x": 0,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 9",
+   "frame": {
+    "x": 184,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 10",
+   "frame": {
+    "x": 368,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 11",
+   "frame": {
+    "x": 552,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 12",
+   "frame": {
+    "x": 736,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 13",
+   "frame": {
+    "x": 920,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 14",
+   "frame": {
+    "x": 1104,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 15",
+   "frame": {
+    "x": 1288,
+    "y": 104,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 16",
+   "frame": {
+    "x": 0,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 17",
+   "frame": {
+    "x": 184,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 18",
+   "frame": {
+    "x": 368,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 19",
+   "frame": {
+    "x": 552,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 20",
+   "frame": {
+    "x": 736,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 21",
+   "frame": {
+    "x": 920,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 22",
+   "frame": {
+    "x": 1104,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 23",
+   "frame": {
+    "x": 1288,
+    "y": 208,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 24",
+   "frame": {
+    "x": 0,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 25",
+   "frame": {
+    "x": 184,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 26",
+   "frame": {
+    "x": 368,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 27",
+   "frame": {
+    "x": 552,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 28",
+   "frame": {
+    "x": 736,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 29",
+   "frame": {
+    "x": 920,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 30",
+   "frame": {
+    "x": 1104,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 31",
+   "frame": {
+    "x": 1288,
+    "y": 312,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 32",
+   "frame": {
+    "x": 0,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 33",
+   "frame": {
+    "x": 184,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 34",
+   "frame": {
+    "x": 368,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 35",
+   "frame": {
+    "x": 552,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 36",
+   "frame": {
+    "x": 736,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 37",
+   "frame": {
+    "x": 920,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 38",
+   "frame": {
+    "x": 1104,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 39",
+   "frame": {
+    "x": 1288,
+    "y": 416,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 40",
+   "frame": {
+    "x": 0,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 41",
+   "frame": {
+    "x": 184,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 42",
+   "frame": {
+    "x": 368,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 43",
+   "frame": {
+    "x": 552,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 44",
+   "frame": {
+    "x": 736,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 45",
+   "frame": {
+    "x": 920,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 46",
+   "frame": {
+    "x": 1104,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 47",
+   "frame": {
+    "x": 1288,
+    "y": 520,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 48",
+   "frame": {
+    "x": 0,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 49",
+   "frame": {
+    "x": 184,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 50",
+   "frame": {
+    "x": 368,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 51",
+   "frame": {
+    "x": 552,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 52",
+   "frame": {
+    "x": 736,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 53",
+   "frame": {
+    "x": 920,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 54",
+   "frame": {
+    "x": 1104,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 55",
+   "frame": {
+    "x": 1288,
+    "y": 624,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 56",
+   "frame": {
+    "x": 0,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 57",
+   "frame": {
+    "x": 184,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 58",
+   "frame": {
+    "x": 368,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 59",
+   "frame": {
+    "x": 552,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 60",
+   "frame": {
+    "x": 736,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 61",
+   "frame": {
+    "x": 920,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 62",
+   "frame": {
+    "x": 1104,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 63",
+   "frame": {
+    "x": 1288,
+    "y": 728,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 64",
+   "frame": {
+    "x": 0,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 65",
+   "frame": {
+    "x": 184,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 66",
+   "frame": {
+    "x": 368,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 67",
+   "frame": {
+    "x": 552,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 68",
+   "frame": {
+    "x": 736,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 69",
+   "frame": {
+    "x": 920,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 70",
+   "frame": {
+    "x": 1104,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 71",
+   "frame": {
+    "x": 1288,
+    "y": 832,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 72",
+   "frame": {
+    "x": 0,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 73",
+   "frame": {
+    "x": 184,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 74",
+   "frame": {
+    "x": 368,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 75",
+   "frame": {
+    "x": 552,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 76",
+   "frame": {
+    "x": 736,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 77",
+   "frame": {
+    "x": 920,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 78",
+   "frame": {
+    "x": 1104,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 79",
+   "frame": {
+    "x": 1288,
+    "y": 936,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 80",
+   "frame": {
+    "x": 0,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 81",
+   "frame": {
+    "x": 184,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 82",
+   "frame": {
+    "x": 368,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 83",
+   "frame": {
+    "x": 552,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 84",
+   "frame": {
+    "x": 736,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 85",
+   "frame": {
+    "x": 920,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 86",
+   "frame": {
+    "x": 1104,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 87",
+   "frame": {
+    "x": 1288,
+    "y": 1040,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 88",
+   "frame": {
+    "x": 0,
+    "y": 1144,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 89",
+   "frame": {
+    "x": 184,
+    "y": 1144,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  },
+  {
+   "filename": "flamethrower 90",
+   "frame": {
+    "x": 368,
+    "y": 1144,
+    "w": 184,
+    "h": 104
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 184,
+    "h": 104
+   },
+   "sourceSize": {
+    "w": 184,
+    "h": 104
+   },
+   "duration": 33
+  }
+ ],
+ "meta": {
+  "app": "https://github.com/patch-gg/pixelfx",
+  "version": "1",
+  "image": "flamethrower-stream.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 1472,
+   "h": 1248
+  },
+  "scale": "1",
+  "frameTags": [
+   {
+    "name": "flamethrower",
+    "from": 0,
+    "to": 90,
+    "direction": "forward"
+   }
+  ],
+  "pixelfx": {
+   "id": "fire/flamethrower-stream",
+   "name": "Flamethrower Stream",
+   "fps": 30,
+   "loop": false,
+   "frames": 91,
+   "frameSize": [
+    184,
+    104
+   ],
+   "pivot": [
+    30,
+    60
+   ],
+   "columns": 8
+  }
+ }
+}

@@ -8,7 +8,8 @@ public class LevelData : ScriptableObject
     public int flatIncrementPerLevel = 10;
     public int GetExpRequired(int currentLevel)
     {
-        float scaled = baseExpToLevel * Mathf.Pow(growthMultiplier, currentLevel - 1);
-        return Mathf.RoundToInt(scaled) + (flatIncrementPerLevel * (currentLevel - 1));
+        double scaled = baseExpToLevel * System.Math.Pow(growthMultiplier, currentLevel - 1);
+        scaled = System.Math.Round(scaled) + flatIncrementPerLevel * (double)(currentLevel - 1);
+        return (int)System.Math.Clamp(scaled, 1d, int.MaxValue);
     }
 }

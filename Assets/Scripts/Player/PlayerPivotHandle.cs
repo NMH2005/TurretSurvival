@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 
+// CinemachineBrain uses order 100; refresh visual aim after its LateUpdate.
+[DefaultExecutionOrder(200)]
 public class PlayerPivotHandle : MonoBehaviour
 {
     [SerializeField] private Transform weaponHoldPoint;
@@ -10,6 +12,18 @@ public class PlayerPivotHandle : MonoBehaviour
     private void Start()
     {
         InputHandler = GetComponent<PlayerInputHandler>();
+    }
+
+    private void LateUpdate()
+    {
+        if (Time.timeScale <= 0f ||
+            InputHandler == null ||
+            !InputHandler.isActiveAndEnabled)
+        {
+            return;
+        }
+
+        RotateTowards(InputHandler.MouseWorldPosition);
     }
 
     public void RotateTowards(Vector2 targetWorldPosition)

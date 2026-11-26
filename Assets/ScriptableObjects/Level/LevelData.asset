@@ -15,4 +15,3 @@ MonoBehaviour:
   baseExpToLevel: 100
   growthMultiplier: 1.2
   flatIncrementPerLevel: 10
-  maxLevel: 50

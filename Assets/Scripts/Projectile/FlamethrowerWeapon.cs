@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FlamethrowerWeapon : MonoBehaviour {
+    private const int FlameColumns = 8;
+    private const int FlameRows = 12;
+    private const int FlameFrameCount = 91;
+    private const int FlamePixelsPerUnit = 100;
+    private static readonly Vector2 FlamePivot = new Vector2(30f / 184f, 44f / 104f);
+    private const int StartFirstFrame = 0;
+    private const int StartLastFrame = 24;
+    private const int LoopFirstFrame = 25;
+    private const int LoopLastFrame = 82;
+
+
     [SerializeField] private FlamethrowerData flameData;
     private FlamethrowerData templateData;
     public FlamethrowerData TemplateData => templateData != null ? templateData : flameData;
@@ -13,16 +24,22 @@ public class FlamethrowerWeapon : MonoBehaviour {
         if (templateData == null) templateData = flameData;
         flameData = data;
     }
-    [SerializeField] private ParticleSystem flameParticle;
+    [SerializeField] private SpriteRenderer flameRenderer;
+    [SerializeField] private Texture2D flameTexture;
+    [SerializeField, Min(1f)] private float flameFps = 30f;
+    [SerializeField, Min(0)] private int flameStartFrame = 21;
 
     private Collider2D flameCollider;
     private bool isFiring;
     private float tickTimer;
+    private Sprite[] flameFrames;
+    private int flameFrameIndex;
+    private float flameFrameTimer;
+    private bool flameStartFinished;
 
     //Scale-based range
     private Vector3 initialScale;
     private float baseRange;
-    private float baseParticleSpeed;
     //Overheat
     private float currentHeat = 0f;
     private bool isOverheated = false;
@@ -57,7 +74,8 @@ public class FlamethrowerWeapon : MonoBehaviour {
         }
         initialScale = transform.localScale;
         baseRange = flameData.flameRange;
-        baseParticleSpeed = flameParticle.main.startSpeed.constant;
+        flameFrames = CreateFlameFrames(flameTexture);
+        if (flameRenderer != null) flameRenderer.enabled = false;
 
         UpdateRangeScale();
     }
@@ -66,9 +84,6 @@ public class FlamethrowerWeapon : MonoBehaviour {
     {
         float multiplier = flameData.flameRange / baseRange;
         transform.localScale = initialScale * multiplier;
-
-        var main = flameParticle.main;
-        main.startSpeed = baseParticleSpeed * multiplier;
     }
 
     public void StartFlame()
@@ -83,8 +98,7 @@ public class FlamethrowerWeapon : MonoBehaviour {
         if (flameCollider != null)
             flameCollider.enabled = true;
 
-        if (flameParticle != null && !flameParticle.isPlaying)
-            flameParticle.Play();
+        PlayFlameVisual();
     }
 
     public void StopFlame()
@@ -95,8 +109,8 @@ public class FlamethrowerWeapon : MonoBehaviour {
         if (flameCollider != null)
             flameCollider.enabled = false;
 
-        if (flameParticle != null && flameParticle.isPlaying)
-            flameParticle.Stop();
+        if (flameRenderer != null)
+            flameRenderer.enabled = false;
 
         foreach (var enemyObj in enemyGameObjects.Values)
         {
@@ -116,11 +130,98 @@ public class FlamethrowerWeapon : MonoBehaviour {
         HandleHeatLogic();
         if (!isFiring) return;
 
+        AdvanceFlameVisual(Time.deltaTime);
         tickTimer -= Time.deltaTime;
         if (tickTimer <= 0f)
         {
             tickTimer = flameData.tickRate;
             DealDamageToEnemiesInRange();
+        }
+    }
+
+    private Sprite[] CreateFlameFrames(Texture2D texture)
+    {
+        if (texture == null) return Array.Empty<Sprite>();
+
+        int frameWidth = texture.width / FlameColumns;
+        int frameHeight = texture.height / FlameRows;
+        var frames = new Sprite[FlameFrameCount];
+        for (int i = 0; i < frames.Length; i++)
+        {
+            int column = i % FlameColumns;
+            int row = i / FlameColumns;
+            var rect = new Rect(
+                column * frameWidth,
+                texture.height - (row + 1) * frameHeight,
+                frameWidth,
+                frameHeight);
+            frames[i] = Sprite.Create(
+                texture,
+                rect,
+                FlamePivot,
+                FlamePixelsPerUnit,
+                0,
+                SpriteMeshType.FullRect);
+        }
+        return frames;
+    }
+
+    private void PlayFlameVisual()
+    {
+        if (flameRenderer == null || flameFrames == null || flameFrames.Length == 0) return;
+
+        flameFrameIndex = StartFirstFrame;
+        flameFrameTimer = 0f;
+        flameStartFinished = false;
+        flameRenderer.sprite = flameFrames[flameFrameIndex];
+        flameRenderer.enabled = true;
+    }
+
+    private void AdvanceFlameVisual(float deltaTime)
+    {
+        if (flameRenderer == null || flameFrames == null || flameFrames.Length == 0) return;
+
+        flameFrameTimer += deltaTime;
+        float frameDuration = 1f / flameFps;
+        if (flameFrameTimer < frameDuration) return;
+
+        int framesToAdvance = Mathf.FloorToInt(flameFrameTimer / frameDuration);
+        flameFrameTimer %= frameDuration;
+        for (int i = 0; i < framesToAdvance; i++)
+            AdvanceOneFlameFrame();
+    }
+
+    private void AdvanceOneFlameFrame()
+    {
+        if (!flameStartFinished)
+        {
+            if (flameFrameIndex >= StartLastFrame)
+            {
+                flameStartFinished = true;
+                flameFrameIndex = LoopFirstFrame;
+            }
+            else
+            {
+                flameFrameIndex++;
+            }
+        }
+        else
+        {
+            flameFrameIndex++;
+
+            if (flameFrameIndex > LoopLastFrame)
+                flameFrameIndex = LoopFirstFrame;
+        }
+
+        flameRenderer.sprite = flameFrames[flameFrameIndex];
+    }
+
+    private void OnDestroy()
+    {
+        if (flameFrames == null) return;
+        foreach (Sprite frame in flameFrames)
+        {
+            if (frame != null) Destroy(frame);
         }
     }
 

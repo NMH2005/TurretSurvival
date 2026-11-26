@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: -8559961681826450468}
   - component: {fileID: 7786221879817664179}
   - component: {fileID: 2695630512656108861}
+  - component: {fileID: 1092341821939082070}
   m_Layer: 7
   m_Name: GreenEnemy2
   m_TagString: Untagged
@@ -367,6 +368,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: 65abc6b282691f944ba6888afd077aa0, type: 2}
+--- !u!114 &1092341821939082070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618611581405078688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7cf1709e21c940ba90dce36dc3301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurnEffect
 --- !u!1 &5933970358898605112
 GameObject:
   m_ObjectHideFlags: 0

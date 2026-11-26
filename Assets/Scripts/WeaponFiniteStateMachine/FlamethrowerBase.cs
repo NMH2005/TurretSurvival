@@ -22,7 +22,7 @@ public class FlamethrowerBase : WeaponBase {
 
     public override void StartFire()
     {
-        if (Time.timeScale <= 0f) return;
+        if (!CanFireFromControl) return;
         EnsureRuntimeData();
         if (!isFlaming && flamethrowerWeapon.CanFire)
         {

@@ -39,6 +39,8 @@ public class Spawner : MonoBehaviour {
 
     private void Update()
     {
+        if (Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
+
         SurvivalTimer += Time.deltaTime;
 
         if (spawnPointHolder != null && player != null)

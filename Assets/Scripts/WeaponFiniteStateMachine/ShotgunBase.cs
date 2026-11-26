@@ -44,7 +44,7 @@ public class ShotgunBase : WeaponBase
 
             Quaternion rotation = Quaternion.Euler(0f,0f,angle);
 
-            SpawnProjectile(shotgun.projectilePrefab, transform.position, Quaternion.identity);
+            SpawnProjectile(shotgun.projectilePrefab, transform.position, rotation);
         }
 
         LastFireTime = Time.time;

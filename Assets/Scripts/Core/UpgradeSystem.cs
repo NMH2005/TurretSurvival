@@ -77,6 +77,7 @@ public class UpgradeSystem : MonoBehaviour {
             ownsPause = true;
 
             weaponSystem.ManualWeapon.StopFire();
+            weaponSystem.ManualWeapon.InputHandler?.ClearFireInput();
             Time.timeScale = 0f;
         }
 
@@ -144,7 +145,10 @@ public class UpgradeSystem : MonoBehaviour {
         if (upgrade.type == UpgradeType.Recovery)
             return true;
 
-        if (GetRank(upgrade) >= upgrade.maxRank)
+        if (upgrade.type == UpgradeType.AcquireAutomatic)
+            return weaponSystem.CanEquipAutomatic(upgrade.targetWeapon);
+
+        if (upgrade.maxRank > 0 && GetRank(upgrade) >= upgrade.maxRank)
             return false;
 
         if (upgrade.value <= 0f ||
@@ -157,11 +161,20 @@ public class UpgradeSystem : MonoBehaviour {
         switch (upgrade.type)
         {
             case UpgradeType.MainDamage:
-                return true;
+                return CanIncreaseDamage(main);
 
             case UpgradeType.MainFireInterval:
                 return main.RuntimeData.Projectile != null &&
                        main.Data.fireRate > 0.05f &&
+                       upgrade.value < 1f;
+
+            case UpgradeType.AutomaticDamage:
+                return CanIncreaseDamage(weaponSystem.GetAutomaticWeapon(upgrade.targetWeapon));
+
+            case UpgradeType.AutomaticCooldown:
+                WeaponBase automatic = weaponSystem.GetAutomaticWeapon(upgrade.targetWeapon);
+                return automatic != null &&
+                       automatic.Data.automaticCooldown > GetMinimumAutomaticCooldown(automatic) &&
                        upgrade.value < 1f;
 
             default:
@@ -181,9 +194,15 @@ public class UpgradeSystem : MonoBehaviour {
         }
 
         isChoosing = false;
-        activeChoices.Clear();
 
-        ApplyReward(choice);
+        if (!ApplyReward(choice))
+        {
+            isChoosing = true;
+            return false;
+        }
+
+        activeChoices.Clear();
+        weaponSystem.ManualWeapon.InputHandler?.ClearFireInput();
 
         if (choice.type != UpgradeType.Recovery)
             ranks[choice] = GetRank(choice) + 1;
@@ -200,7 +219,7 @@ public class UpgradeSystem : MonoBehaviour {
         return true;
     }
 
-    private void ApplyReward(UpgradeData choice)
+    private bool ApplyReward(UpgradeData choice)
     {
         WeaponBase main = weaponSystem.ManualWeapon;
 
@@ -208,13 +227,30 @@ public class UpgradeSystem : MonoBehaviour {
         {
             case UpgradeType.MainDamage:
                 ScaleDamage(main, 1f + choice.value);
-                break;
+                return true;
 
             case UpgradeType.MainFireInterval:
                 main.Data.fireRate = Mathf.Max(
                     0.05f,
                     main.Data.fireRate * (1f - choice.value));
-                break;
+                return true;
+
+            case UpgradeType.AcquireAutomatic:
+                return weaponSystem.TryEquipAutomatic(choice.targetWeapon);
+
+            case UpgradeType.AutomaticDamage:
+                WeaponBase damageTarget = weaponSystem.GetAutomaticWeapon(choice.targetWeapon);
+                if (damageTarget == null) return false;
+                ScaleDamage(damageTarget, 1f + choice.value);
+                return true;
+
+            case UpgradeType.AutomaticCooldown:
+                WeaponBase cooldownTarget = weaponSystem.GetAutomaticWeapon(choice.targetWeapon);
+                if (cooldownTarget == null) return false;
+                cooldownTarget.Data.automaticCooldown = Mathf.Max(
+                    GetMinimumAutomaticCooldown(cooldownTarget),
+                    cooldownTarget.Data.automaticCooldown * (1f - choice.value));
+                return true;
 
             case UpgradeType.Recovery:
                 if (health.CurrentHealth < health.MaxHealth)
@@ -235,8 +271,38 @@ public class UpgradeSystem : MonoBehaviour {
                     }
                 }
 
-                break;
+                return true;
+
+            default:
+                return false;
         }
+    }
+
+    private static bool CanIncreaseDamage(WeaponBase weapon)
+    {
+        WeaponRuntimeData runtime = weapon != null ? weapon.RuntimeData : null;
+        if (runtime == null) return false;
+
+        bool CanIncrease(int value) => value > 0 && value < int.MaxValue;
+
+        return (runtime.Projectile != null && CanIncrease(runtime.Projectile.damage)) ||
+               (runtime.Laser != null && CanIncrease(runtime.Laser.damagePerTick)) ||
+               (runtime.Flame != null &&
+                   (CanIncrease(runtime.Flame.damagePerTick) || CanIncrease(runtime.Flame.burnDamagePerTick))) ||
+               (runtime.Chain != null && CanIncrease(runtime.Chain.damagePerJump));
+    }
+
+    private static float GetMinimumAutomaticCooldown(WeaponBase weapon)
+    {
+        WeaponData data = weapon.Data;
+        return data.automaticAttackPattern switch
+        {
+            AutomaticAttackPattern.NearestPulse => Mathf.Max(0.05f, data.automaticAttackDuration),
+            AutomaticAttackPattern.NearestBurst => Mathf.Max(
+                0.05f,
+                (Mathf.Max(1, data.burstCount) - 1) * Mathf.Max(0.01f, data.burstInterval)),
+            _ => 0.05f
+        };
     }
 
     private static void ScaleDamage(
@@ -251,7 +317,7 @@ public class UpgradeSystem : MonoBehaviour {
         int Scale(int value)
         {
             return value > 0
-                ? Mathf.CeilToInt(value * multiplier)
+                ? (int)System.Math.Min(int.MaxValue, System.Math.Ceiling(value * multiplier))
                 : value;
         }
 

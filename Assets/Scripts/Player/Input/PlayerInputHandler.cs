@@ -3,24 +3,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour {
     public Vector2 RawMovementInput { get; private set; }
-    public bool fireInput {  get; private set; }
+    public bool fireInput => isActiveAndEnabled &&
+                             Application.isFocused &&
+                             Time.timeScale > 0f &&
+                             !requireFireRelease &&
+                             attackAction != null &&
+                             attackAction.IsPressed();
     public int NormInputX { get; private set; }
     public int NormInputY { get; private set; }
-    public Vector2 MouseWorldPosition { get; private set; }
+    public Vector2 MouseWorldPosition
+    {
+        get
+        {
+            if (Mouse.current == null || mainCamera == null)
+                return transform.position;
+
+            return mainCamera.ScreenToWorldPoint(
+                Mouse.current.position.ReadValue());
+        }
+    }
     private Camera mainCamera;
     private WeaponSystem weaponSystem;
+    private InputAction attackAction;
+    private bool requireFireRelease;
 
     private void Awake()
     {
         mainCamera = Camera.main;
-    }
-    private void Update()
-    {
-        if (Mouse.current != null)
-        {
-            Vector2 mouseScreenPos = Mouse.current.position.ReadValue();
-            MouseWorldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPos);
-        }
     }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
@@ -29,8 +38,33 @@ public class PlayerInputHandler : MonoBehaviour {
 
     public void OnFireInput(InputAction.CallbackContext context)
     {
-        if (context.started || context.performed) fireInput = true;
-        else if (context.canceled) fireInput = false;
+        attackAction = context.action;
+
+        if (context.canceled)
+        {
+            requireFireRelease = false;
+            return;
+        }
+
+        if (Time.timeScale <= 0f || !Application.isFocused)
+            ClearFireInput();
+        else if (context.started)
+            requireFireRelease = false;
+    }
+
+    public void ClearFireInput()
+    {
+        requireFireRelease = true;
+    }
+
+    private void OnDisable()
+    {
+        ClearFireInput();
+    }
+
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (!hasFocus) ClearFireInput();
     }
 
     public void OnReloadInput(InputAction.CallbackContext context)

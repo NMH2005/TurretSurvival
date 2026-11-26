@@ -71,6 +71,10 @@ public class ChainLightningEffect : MonoBehaviour {
                 next.position
             );
 
+            Core targetCore = next.GetComponentInParent<Core>();
+            ElectrocutedEffect.Apply(
+                targetCore != null ? targetCore.gameObject : next.gameObject);
+
             next.GetComponentInChildren<Idamageable>()
                 ?.TakeDamage(data.damagePerJump);
 

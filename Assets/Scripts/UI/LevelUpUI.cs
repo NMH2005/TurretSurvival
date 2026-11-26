@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class LevelUpUI : MonoBehaviour {
     [SerializeField] private UpgradeSystem upgradeSystem;
@@ -31,6 +32,9 @@ public class LevelUpUI : MonoBehaviour {
         }
 
         panelRoot.SetActive(true);
+
+        if (choices.Count > 0 && cards.Length > 0 && EventSystem.current != null)
+            EventSystem.current.SetSelectedGameObject(cards[0].gameObject);
     }
 
     public void Hide()

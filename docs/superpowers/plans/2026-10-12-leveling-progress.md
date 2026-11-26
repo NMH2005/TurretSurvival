@@ -28,3 +28,15 @@
 - Manual magazines auto-reload when empty; R reloads partial magazines/battery; held fire resumes after completion. Automatic modes bypass ammo/battery/heat. Reload, battery drain, heat recovery, and continuous damage updates stop while paused.
 - Flamethrower cooling now uses cooldownTime, honors overheat jam followed by full cooling, and repeated StartFlame calls do not restart damage ticks.
 - Task 2 implementation delivered for user testing. Tasks 3–7 remain pending.
+
+## Task 5.1 — Automatic acquisition rewards (2026-11-04)
+
+- Base commit: 051fc43. Tasks 3–4 are present in the user's current code and scene; the earlier ledger entries do not describe their current state.
+- Ruling: implement only the automatic acquisition slice described in the preceding tutorial. Weapon ranks 2–5, passive items, and evolutions remain deferred. Work stays in the user-authorized current checkout and existing local edits are preserved.
+- Ruling: honor the user's standing instruction to leave tests to them. No new tests, Unity build, or gameplay run is part of this slice; delivery does not establish verified gameplay.
+- Reused the user's existing AcquireAutomatic enum, targetWeapon field, GetAutomaticWeapon/CanEquipAutomatic methods, and TryEquipAutomatic gate. Corrected `data = null` to `data == null` so duplicate lookup retains the requested template.
+- UpgradeSystem filters acquisition cards through CanEquipAutomatic, applies them through TryEquipAutomatic, and consumes the queued level only after ApplyReward reports success.
+- Added AcquireRifle, AcquireShotgun, and AcquireLightning assets with metadata, target definitions, descriptions, and existing weapon icons; registered all three in Main Scene alongside the two existing main-weapon rewards.
+- UpgradeChoiceCard now updates its category text for each reward; all three category references are wired in Main Scene. Shared panel wording now refers to rewards.
+- Corrected ShotgunBase.FireRadial to pass its computed rotation when spawning each pellet. Previously every pellet received Quaternion.identity and traveled in the same direction.
+- Static review: inspected the modified call sites, acquisition asset GUIDs/targets, category component references, and scene reward list. No C# compilation or gameplay verification was run. Existing scene whitespace outside this slice was preserved.

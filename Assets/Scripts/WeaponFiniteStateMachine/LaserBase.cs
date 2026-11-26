@@ -22,7 +22,7 @@ public class LaserBase : WeaponBase {
 
     public override void StartFire()
     {
-        if (Time.timeScale <= 0f) return;
+        if (!CanFireFromControl) return;
         EnsureRuntimeData();
         if (IsManual && (IsReloading || BatteryRemaining <= 0f)) return;
         laserWeapon.StartLaser();

@@ -4,7 +4,8 @@ public enum AutomaticAttackPattern {
     None,
     NearestBurst,
     NearestChain,
-    RadialBurst
+    RadialBurst,
+    NearestPulse
 }
 
 [CreateAssetMenu(fileName = "WeaponData", menuName = "Scriptable Objects/WeaponData")]
@@ -25,6 +26,7 @@ public class WeaponData : ScriptableObject
     public int burstCount;
     public float burstInterval;
     public int radialProjectileCount;
+    public float automaticAttackDuration = 2f;
 
     [Header("Manual weapon recovery")]
     public int magazineCapacity = 12;

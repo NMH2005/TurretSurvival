@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: -7260302202763114988}
   - component: {fileID: 7066079725219433344}
   - component: {fileID: -3807766230827194352}
+  - component: {fileID: 149325101175533338}
   m_Layer: 7
   m_Name: PurpleEnemy2
   m_TagString: Untagged
@@ -229,6 +230,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: a0439ff8a67ee134e81d2a6ffb1a0807, type: 2}
+--- !u!114 &149325101175533338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748071843635869779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7cf1709e21c940ba90dce36dc3301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurnEffect
 --- !u!1 &3509468808726497913
 GameObject:
   m_ObjectHideFlags: 0

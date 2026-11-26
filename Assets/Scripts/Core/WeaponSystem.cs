@@ -5,7 +5,6 @@ public class WeaponSystem : CoreComponent
 {
     [SerializeField] private Transform weaponPivot;
     [SerializeField] private Transform automaticWeaponRoot;
-    [SerializeField] private int maxAutomaticSlots = 3;
 
     private readonly List<WeaponBase> equippedWeapons = new();
     private readonly List<WeaponBase> automaticWeapons = new();
@@ -14,7 +13,6 @@ public class WeaponSystem : CoreComponent
     public IReadOnlyList<WeaponBase> AutomaticWeapons => automaticWeapons;
 
     public WeaponBase ManualWeapon => equippedWeapons.Find(weapon => weapon != null && weapon.IsManual);
-    public bool HasFreeSlot => automaticWeapons.Count < maxAutomaticSlots;
 
     public bool TryEquipManual(WeaponData data)
     {
@@ -32,11 +30,8 @@ public class WeaponSystem : CoreComponent
 
     public bool TryEquipAutomatic(WeaponData data)
     {
-        if(data == null) return false;
-
-        if(data.automaticAttackPattern == AutomaticAttackPattern.None) return false;
-
-        if(automaticWeapons.Count >= maxAutomaticSlots) return false;
+        if (!CanEquipAutomatic(data))
+            return false;
 
         WeaponBase weapon = CreateWeapon(data, automaticWeaponRoot, false);
         if(weapon == null) return false;
@@ -80,5 +75,23 @@ public class WeaponSystem : CoreComponent
         if(!success) return null;
 
         return equippedWeapons[equippedWeapons.Count - 1];
+    }
+
+    public WeaponBase GetAutomaticWeapon(WeaponData data)
+    {
+        if (data == null) return null;
+
+        return automaticWeapons.Find(weapon => weapon != null && weapon.TemplateData == data);
+    }
+
+    public bool CanEquipAutomatic(WeaponData data)
+    {
+        return data != null &&
+               data.weaponPrefab != null &&
+               data.weaponPrefab.GetComponent<WeaponBase>() != null &&
+               automaticWeaponRoot != null &&
+               data.automaticAttackPattern != AutomaticAttackPattern.None &&
+               (ManualWeapon == null || ManualWeapon.TemplateData != data) &&
+               GetAutomaticWeapon(data) == null;
     }
 }

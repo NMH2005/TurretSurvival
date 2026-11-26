@@ -23,9 +23,14 @@ public class WeaponBase : MonoBehaviour {
     public Transform Target { get; set; }
 
     public bool IsManual { get; private set; } = true;
+    protected bool CanFireFromControl => Time.timeScale > 0f &&
+        (!IsManual || (InputHandler != null && InputHandler.fireInput));
     public void SetControlMode(bool isManual)
     {
         IsManual = isManual;
+
+        AutomaticAttackController automatic = GetComponent<AutomaticAttackController>();
+        if (automatic != null) automatic.enabled = !isManual;
 
         foreach(SpriteRenderer renderer in gunbodyRenderers)
         {
@@ -105,7 +110,7 @@ public class WeaponBase : MonoBehaviour {
 
     public virtual void StartFire()
     {
-        if (Time.timeScale <= 0f) return;
+        if (!CanFireFromControl) return;
         EnsureRuntimeData();
         if (Time.time >= LastFireTime + Data.fireRate)
         {
@@ -119,7 +124,7 @@ public class WeaponBase : MonoBehaviour {
 
     protected bool TryConsumeManualShot()
     {
-        if (Time.timeScale <= 0f) return false;
+        if (!CanFireFromControl) return false;
         if (!IsManual || Ammo == null) return true;
         Ammo.ReloadDuration = Data.reloadDuration;
         if (!Ammo.TryConsumeShot())

@@ -7,6 +7,8 @@ public class AutomaticAttackController : MonoBehaviour {
     private float nextAttackTime;
     private float nextShotTime;
     private int remainingShots;
+    private bool isPulsing;
+    private float pulseEndTime;
 
     private readonly List<Collider2D> nearbyEnemies = new(32);
     private WeaponData data => weapon.Data;
@@ -14,8 +16,15 @@ public class AutomaticAttackController : MonoBehaviour {
     public void Initialize(WeaponBase source)
     {
         weapon = source;
+        if (weapon == null || weapon.IsManual)
+        {
+            enabled = false;
+            return;
+        }
+
         weapon.Target = null;
         remainingShots = 0;
+        isPulsing = false;
         nextShotTime = 0f;
         nextAttackTime = Time.time + Mathf.Max(0.05f, data.automaticCooldown);
         enabled = true;
@@ -30,6 +39,16 @@ public class AutomaticAttackController : MonoBehaviour {
 
         if (Time.timeScale <= 0f || Time.deltaTime <= 0f)
             return;
+
+        if (isPulsing)
+        {
+            if (Time.time >= pulseEndTime || !TryAimTarget())
+            {
+                weapon.StopFire();
+                isPulsing = false;
+            }
+            return;
+        }
 
         if (remainingShots > 0)
         {
@@ -131,6 +150,16 @@ public class AutomaticAttackController : MonoBehaviour {
     {
         switch (data.automaticAttackPattern)
         {
+            case AutomaticAttackPattern.NearestPulse:
+                {
+                    weapon.Target = FindNearestEnemy();
+                    if (!TryAimTarget()) return false;
+
+                    pulseEndTime = Time.time + Mathf.Max(0.05f, data.automaticAttackDuration);
+                    isPulsing = true;
+                    weapon.StartFire();
+                    return true;
+                }
             case AutomaticAttackPattern.NearestBurst:
                 {
                     weapon.Target = FindNearestEnemy();
@@ -164,5 +193,12 @@ public class AutomaticAttackController : MonoBehaviour {
             default:
                 return false;
         }
+    }
+
+    private void OnDisable()
+    {
+        if (weapon != null) weapon.StopFire();
+        isPulsing = false;
+        remainingShots = 0;
     }
 }

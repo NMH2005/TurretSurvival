@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: WaveData
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   waves:
-  - name: 
+  - name: Green Swarm
     startTime: 0
-    endTime: 60
+    endTime: -1
     enemies:
     - enemyPrefab: {fileID: 7164716663831477485, guid: ed20da488a307994783e6fa5a0a01275, type: 3}
-      countPerSpawn: 10
+      countPerSpawn: 3
       spawnInterval: 2
-      maxAlive: 1000
+      maxAlive: 180

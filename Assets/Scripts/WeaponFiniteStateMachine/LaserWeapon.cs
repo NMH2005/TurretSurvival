@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class LaserWeapon : MonoBehaviour {
     [SerializeField] private LaserData laserData;
+    [SerializeField] private Transform firePoint;
+
     private LaserData templateData;
     public LaserData TemplateData => templateData != null ? templateData : laserData;
 
@@ -12,42 +13,79 @@ public class LaserWeapon : MonoBehaviour {
         if (templateData == null) templateData = laserData;
         laserData = data;
     }
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private LineRenderer lineRenderer;
-    [SerializeField] private GameObject startVFX;
-    [SerializeField] private GameObject endVFX;
+
+    private const int BeamFrameCount = 36;
+    private const int BeamColumns = 4;
+    private const int BeamRows = 9;
+    private const float BeamPixelsPerUnit = 100f;
+    private const float BeamArtLength = 1.68f;
+    private const float BeamSourceOffset = 0.15f;
+    private static readonly Vector2 BeamPivot =
+        new Vector2(26f / 264f, 16f / 100f);
+
+    [SerializeField] private SpriteRenderer beamRenderer;
+    [SerializeField] private Texture2D beamSheet;
+    [SerializeField, Min(1f)] private float beamFps = 30f;
+
+    private Sprite[] beamFrames;
+    private int beamFrameIndex;
+    private float beamFrameTimer;
 
     private bool isFiring;
     public bool IsFiring => isFiring;
-    private float tickTimer;
 
-    private readonly List<ParticleSystem> startParticles = new List<ParticleSystem>();
-    private readonly List<ParticleSystem> endParticles = new List<ParticleSystem>();
+    private float tickTimer;
 
     private static RaycastHit2D[] hitBuffer = new RaycastHit2D[10];
 
     private void Awake()
     {
-        FillList(startVFX, startParticles);
-        FillList(endVFX, endParticles);
+        beamFrames = CreateBeamFrames(beamSheet);
+
+        if (beamRenderer != null)
+        {
+            beamRenderer.transform.localPosition = Vector3.zero;
+            beamRenderer.transform.localRotation =
+                Quaternion.Euler(0f, 0f, 90f);
+
+            beamRenderer.enabled = false;
+        }
     }
 
-    private void FillList(GameObject vfxRoot, List<ParticleSystem> list)
+    private Sprite[] CreateBeamFrames(Texture2D texture)
     {
-        if (vfxRoot == null) return;
-        vfxRoot.GetComponentsInChildren(true, list);
+        if (texture == null)
+            return System.Array.Empty<Sprite>();
+
+        int frameWidth = texture.width / BeamColumns;
+        int frameHeight = texture.height / BeamRows;
+        var frames = new Sprite[BeamFrameCount];
+
+        for (int i = 0; i < frames.Length; i++)
+        {
+            int column = i % BeamColumns;
+            int row = i / BeamColumns;
+
+            frames[i] = Sprite.Create(texture, new Rect(column * frameWidth, texture.height - (row + 1) * frameHeight, frameWidth, frameHeight), BeamPivot, BeamPixelsPerUnit, 0, SpriteMeshType.FullRect);
+        }
+
+        return frames;
     }
 
     public void StartLaser()
     {
-        if (isFiring)
-            return;
+        if (isFiring) return;
+
         isFiring = true;
         tickTimer = 0f;
-        lineRenderer.enabled = true;
+        beamFrameIndex = 0;
+        beamFrameTimer = 0f;
 
-        PlayAll(startParticles);
-        PlayAll(endParticles);
+        if (beamRenderer != null && beamFrames.Length > 0)
+        {
+            beamRenderer.sprite = beamFrames[0];
+            beamRenderer.enabled = true;
+        }
     }
 
     public void StopLaser()
@@ -55,24 +93,11 @@ public class LaserWeapon : MonoBehaviour {
         if (!isFiring)
             return;
         isFiring = false;
-        lineRenderer.enabled = false;
 
-        StopAll(startParticles);
-        StopAll(endParticles);
-    }
-
-    private void PlayAll(List<ParticleSystem> list)
-    {
-        for (int i = 0; i < list.Count; i++)
+        if (beamRenderer != null)
         {
-            list[i].gameObject.SetActive(true);
-            list[i].Play();
+            beamRenderer.enabled = false;
         }
-    }
-
-    private void StopAll(List<ParticleSystem> list)
-    {
-        for (int i = 0; i < list.Count; i++) list[i].Stop();
     }
 
     private void Update()
@@ -109,14 +134,35 @@ public class LaserWeapon : MonoBehaviour {
             }
         }
 
-        Vector2 endPoint = origin + direction * hitDistance;
-
-        lineRenderer.SetPosition(0, origin);
-        lineRenderer.SetPosition(1, endPoint);
-
-        if (endVFX != null)
+        if (beamRenderer != null && beamFrames.Length > 0)
         {
-            endVFX.transform.position = endPoint;
+
+            float parentScale = firePoint.TransformVector(Vector3.up).magnitude;
+
+            if (parentScale <= 0.0001f) parentScale = 1f;
+
+            float beamScaleX = Mathf.Max( 0.01f, hitDistance / (BeamArtLength * parentScale)); beamRenderer.transform.localScale = new Vector3(beamScaleX, 1f, 1f);
+            beamRenderer.transform.localPosition = Vector3.down * (BeamSourceOffset * beamScaleX);
+            beamFrameTimer += Time.deltaTime;
+            float frameDuration = 1f / beamFps;
+            if (beamFrameTimer >= frameDuration)
+            {
+                int framesToAdvance = Mathf.FloorToInt(beamFrameTimer / frameDuration);
+                beamFrameTimer %= frameDuration;
+                beamFrameIndex = (beamFrameIndex + framesToAdvance) % beamFrames.Length;
+                beamRenderer.sprite = beamFrames[beamFrameIndex];
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (beamFrames == null) return;
+
+        foreach (Sprite frame in beamFrames)
+        {
+            if (frame != null)
+                Destroy(frame);
         }
     }
 }

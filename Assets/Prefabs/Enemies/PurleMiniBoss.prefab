@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: -4551205092864067555}
   - component: {fileID: -901820271427050813}
   - component: {fileID: 215039702249887546}
+  - component: {fileID: -2091834710340056482}
   m_Layer: 7
   m_Name: PurleMiniBoss
   m_TagString: Untagged
@@ -321,6 +322,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: ae026371a4533c6489a47597470d5cef, type: 2}
+--- !u!114 &-2091834710340056482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4870767158522362463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7cf1709e21c940ba90dce36dc3301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurnEffect
 --- !u!1 &6648739153085490868
 GameObject:
   m_ObjectHideFlags: 0

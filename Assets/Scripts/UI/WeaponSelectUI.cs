@@ -14,16 +14,34 @@ public class WeaponSelectUI : MonoBehaviour
     {
         player = FindAnyObjectByType<PlayerController>();
 
-        for(int i = 0; i<cards.Length; i++)
+        for (int i = 0; i < cards.Length; i++)
         {
-            int index = i;
-            cards[index].Setup(availableWeapons[index], () => SelectWeapon(availableWeapons[index]) );
+            bool hasWeapon =
+                i < availableWeapons.Length &&
+                availableWeapons[i] != null;
+
+            cards[i].gameObject.SetActive(hasWeapon);
+
+            if (!hasWeapon)
+                continue;
+
+            WeaponData choice = availableWeapons[i];
+
+            cards[i].Setup(
+                choice,
+                () => SelectWeapon(choice));
         }
     }
 
     private void SelectWeapon(WeaponData weaponData)
     {
-        player.Core.WeaponSystem.EquipWeapon(weaponData);
-        panelRoot.SetActive(false);
+        bool success =
+            player.Core.WeaponSystem.TryEquipManual(weaponData);
+
+        if (success)
+        {
+            player.InputHandler.ClearFireInput();
+            panelRoot.SetActive(false);
+        }
     }
 }

@@ -20,17 +20,21 @@ public class LevelSystem : CoreComponent {
 
     public void AddExp(int amount)
     {
-        CurrentExp += amount;
-        while (CurrentExp >= ExpToNextLevel)
+        if (amount <= 0) return;
+
+        long remainingExp = (long)CurrentExp + amount;
+        while (remainingExp >= ExpToNextLevel)
         {
             EventsManager.RaiseExpChanged(ExpToNextLevel, ExpToNextLevel, CurrentLevel);
 
-            CurrentExp -= ExpToNextLevel;
+            remainingExp -= ExpToNextLevel;
+            CurrentExp = (int)System.Math.Min(remainingExp, int.MaxValue);
             CurrentLevel++;
             ExpToNextLevel = levelData.GetExpRequired(CurrentLevel);
             EventsManager.RaiseLevelUp(CurrentLevel);
         }
 
+        CurrentExp = (int)remainingExp;
         EventsManager.RaiseExpChanged(CurrentExp, ExpToNextLevel, CurrentLevel);
     }
 }

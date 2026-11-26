@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: -8925561834220928024}
   - component: {fileID: -8242808860289027966}
   - component: {fileID: 5747858052995953862}
+  - component: {fileID: -9194462608735348588}
   m_Layer: 7
   m_Name: GreenMiniBoss
   m_TagString: Untagged
@@ -271,6 +272,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemyData: {fileID: 11400000, guid: 4a0bf28fe3133fe47968f8c251a03375, type: 2}
+--- !u!114 &-9194462608735348588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637496825606159036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fb7cf1709e21c940ba90dce36dc3301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BurnEffect
 --- !u!1 &2548749442993167165
 GameObject:
   m_ObjectHideFlags: 0

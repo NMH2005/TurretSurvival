@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb75b08d0faed3d49a5a99bdfae0ea3a, type: 3}
+  m_Name: AcquireLaser
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
+  targetWeapon: {fileID: 11400000, guid: ee34b59221ddb154a8eb9ee8a3104f8e, type: 2}
+  displayName: LASER SUPPORT
+  description: 'Gain an automatic laser. Track nearby enemies for 2s every 5s.'
+  icon: {fileID: 21300000, guid: 0f039bd4f2796eb479fe04e28bd03459, type: 3}
+  type: 3
+  maxRank: 1
+  value: 0
